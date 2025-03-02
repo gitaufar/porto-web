@@ -86,11 +86,6 @@ svg {
   .circular-gallery {
     display: none;
   }
-
-  .gallery-container {
-    opacity: 1;
-    position: relative;
-  }
 }
 
 @keyframes typing {

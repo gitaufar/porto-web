@@ -84,3 +84,11 @@
     width: 100px;
   }
 }
+
+@media (max-width: 450px) {
+  .gallery-container {
+    opacity: 1;
+    position: relative;
+  }
+}
+
