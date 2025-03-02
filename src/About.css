@@ -1,4 +1,5 @@
 .about-section {
+  background-color: var(--aksen);
   height: 100vh;
   width: 100%;
   display: flex;
@@ -21,7 +22,7 @@
 
 .custom-blur-text {
   position: relative;
-  z-index: -1; /* Pastikan lebih rendah dari .list-container */
+  z-index: 0; /* Pastikan lebih rendah dari .list-container */
   margin: 0;
   padding: 0;
   text-align: center;

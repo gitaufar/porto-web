@@ -1,4 +1,58 @@
 .project-section {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
+    padding-top: 3rem;
+    background-color: var(--aksen);
+    padding-bottom: 1rem;
+}
+
+h3 {
+    color: var(--interact);
+}
+
+p {
+    color: var(--text-utama);
+}
+
+ul {
+    list-style: none; /* Hilangkan bullet default */
+    padding-left: 0; /* Hilangkan padding default */
+    margin-left: 20px; /* Beri jarak ke kiri */
+}
+
+li {
+    position: relative;
+    padding-left: 45px; /* Tambah jarak untuk bullet besar */
+}
+
+/* Bullet besar */
+li::before {
+    content: "•"; /* Unicode bullet character */
+    position: absolute;
+    left: 0;
+    top: -15px; /* Sesuaikan posisi vertikal bullet */
+    font-size: 3rem; /* Bullet besar */
+    color: var(--interact); /* Warna bullet */
+    line-height: 1;
+}
+
+/* Garis vertikal */
+li::after {
+    content: "";
+    position: absolute;
+    left: 18px; /* Posisikan garis di tengah bullet */
+    top: 30px; /* Mulai garis di bawah bullet */
+    width: 3px; /* Lebar garis */
+    height: calc(100% - 30px); /* Tinggi garis sampai akhir konten */
+    background-color: var(--text-utama); /* Warna garis */
+}
+
+.project-container {
+    color: var(--text-utama);
+}
+
+.git-link {
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
 }
