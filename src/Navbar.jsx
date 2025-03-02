@@ -38,17 +38,20 @@ export default function Navbar() {
             <div className='nama-container'>
                 <h6 className='typing-effect'>import Aufar.Portofolio</h6>
             </div>
-            <svg ref={menuRef} id='menu' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
             <div ref={navbarRef} className='list-container'>
                 <a href='#about'>about</a>
                 <a href='#tech-stack'>tech stack</a>
                 <a href='#project'>projects</a>
                 <a href='#journey'>journey</a>
             </div>
+            <div className='spacer'>
+
+            </div>
+            <svg ref={menuRef} id='menu' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
         </div>
     );
 }

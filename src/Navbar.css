@@ -6,11 +6,16 @@
     padding: 1rem 2.5rem;
     justify-content: space-between;
     position: fixed;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .nama-container {
     display: flex;
     align-items: center;
+    width: 23.5ch;
 }
 
 .typing-effect {
@@ -28,6 +33,10 @@ svg {
     display: none;
 }
 
+.spacer {
+    display: none;
+}
+
 .list-container {
     margin-right: 5rem;
     gap: 1rem;
@@ -36,20 +45,27 @@ svg {
 }
 
 @media screen and (max-width: 768px) {
+
     html {
         font-size: 90%;
     }
 
-    .container{
-        position: fixed;
-        align-items: center;
+    .container {
+        justify-content: flex-start;
+    }
+
+    .spacer {
+        display: flex;
+        flex-grow: .8;
+        height: auto;
+    }
+
+    .typing-effect {
+        font-size: 1rem;
     }
 
     svg {
-        right: 0%;
-        position: absolute;
         display: inline-block;
-        width: 40%;
         cursor: pointer;
     }
 
@@ -63,7 +79,7 @@ svg {
         transition: .3s;
         align-items: flex-start;
         flex-direction: column;
-        z-index: 9999;
+        z-index: 1000;
     }
 
     .list-container.active{
@@ -74,6 +90,12 @@ svg {
         margin-left: 1rem;
     }
   }
+
+  @media (max-width:450px) {
+    .spacer {
+        flex-grow: .65;
+    }
+}
 
 @keyframes typing {
     0% {
