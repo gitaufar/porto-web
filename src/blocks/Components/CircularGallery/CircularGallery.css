@@ -1,0 +1,16 @@
+/*
+	jsrepo 1.41.2
+	Installed from https://reactbits.dev/default/
+	3-1-2025
+*/
+
+.circular-gallery {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
