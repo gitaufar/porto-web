@@ -1,0 +1,12 @@
+.tech-stack-section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.tech-text{
+    width: 50%;
+    font-size: xx-large;
+    color: var(--text-utama);
+}
