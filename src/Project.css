@@ -12,6 +12,7 @@ h3 {
 
 p {
     color: var(--text-utama);
+    max-width: 95%;
 }
 
 ul {
