@@ -34,7 +34,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <div className='container'>
+        <div className='w-full container'>
             <div className='nama-container'>
                 <h6 className='typing-effect'>import Aufar.Portofolio</h6>
             </div>
@@ -44,13 +44,7 @@ export default function Navbar() {
                 <a href='#project'>projects</a>
                 <a href='#journey'>journey</a>
             </div>
-            <div className='spacer'>
-
-            </div>
-            <svg ref={menuRef} id='menu' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
+            <svg ref={menuRef} id='menu' className="w-6 h-6" width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </div>
     );

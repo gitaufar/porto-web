@@ -15,7 +15,6 @@
 .nama-container {
     display: flex;
     align-items: center;
-    width: 23.5ch;
 }
 
 .typing-effect {
@@ -50,21 +49,13 @@ svg {
         font-size: 90%;
     }
 
-    .container {
-        justify-content: flex-start;
-    }
-
-    .spacer {
-        display: flex;
-        flex-grow: .8;
-        height: auto;
-    }
-
     .typing-effect {
         font-size: 1rem;
+        width: 23.5ch;
     }
 
     svg {
+        margin-right: 70px;
         display: inline-block;
         cursor: pointer;
     }
@@ -90,12 +81,6 @@ svg {
         margin-left: 1rem;
     }
   }
-
-  @media (max-width:450px) {
-    .spacer {
-        flex-grow: .65;
-    }
-}
 
 @keyframes typing {
     0% {
