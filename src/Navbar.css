@@ -19,7 +19,6 @@
 
 .typing-effect {
   margin: 0;
-  font-size: 1.3rem;
   color: var(--text-utama);
   display: inline-block;
   white-space: nowrap;
