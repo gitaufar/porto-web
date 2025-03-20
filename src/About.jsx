@@ -15,19 +15,19 @@ export default function About() {
 
   const logo = [
     {
-      img: "../public/icon_email.svg",
+      img: "/icon_email.svg",
       link: "mailto:zhafiraufar123@gmail.com"
     },
     {
-      img: "../public/icon_instagram.svg",
+      img: "/icon_instagram.svg",
       link: "https://www.instagram.com/aufarzhfr/"
     },
     {
-      img: "../public/icon_linkedin.svg",
+      img: "/icon_linkedin.svg",
       link: "https://www.linkedin.com/in/zhafir-aufar-522312289/"
     },
     {
-      img: "../public/icon_github.svg",
+      img: "/icon_github.svg",
       link: "https://github.com/gitaufar"
     },
   ]

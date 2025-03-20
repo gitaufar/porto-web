@@ -8,7 +8,7 @@ export default function TechStack() {
         <div className="tech-stack-section" id="tech-stack">
             <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
             <div className="small-container">
-                <h1 className="tech-text">Tech Stack</h1>
+                <h1 className="text-md">Tech Stack</h1>
                 <RollingGallery autoplay={true} pauseOnHover={true} />
             </div>
         </div>

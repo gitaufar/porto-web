@@ -35,7 +35,7 @@ export default function Navbar() {
 
     return (
         <div className="fixed top-0 left-0 w-full bg-[#1e1e1e] p-5 flex justify-between items-center z-50">
-            <div className="text-purple-400 text-lg font-mono border-r-2 border-purple-400 pr-2 whitespace-nowrap overflow-hidden typing-effect">
+            <div className="text-purple-400 text-md md:text-lg font-mono border-r-2 border-purple-400 pr-2 whitespace-nowrap overflow-hidden typing-effect">
                 import Aufar.Portofolio
             </div>
             <div ref={navbarRef} className="absolute md:static top-full -right-full md:right-0 bg-[#1e1e1e] md:bg-transparent flex flex-col md:flex-row md:items-center gap-4 w-1/2 md:w-auto h-screen md:h-auto transition-all duration-300">

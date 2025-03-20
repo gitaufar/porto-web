@@ -10,6 +10,28 @@
     font-family: "consolas", "Inter", sans-serif;
   }
 
+  @layer themes {
+  .dark {
+    --text-utama: #e0e0e0;
+    --aksen: #1e1e1e;
+    --interact: #bb86fc;
+    --text-kecil: 0.8rem;
+    background-color: #121212;
+    font-family: "consolas", "Inter", sans-serif;
+  }
+}
+
+@layer themes {
+  .light {
+    --text-utama: #e0e0e0;
+    --aksen: #1e1e1e;
+    --interact: #bb86fc;
+    --text-kecil: 0.8rem;
+    background-color: #121212;
+    font-family: "consolas", "Inter", sans-serif;
+  }
+}
+
   html {
     scroll-behavior: smooth;
   }
