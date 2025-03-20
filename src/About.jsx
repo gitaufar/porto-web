@@ -52,7 +52,7 @@ export default function About() {
         <ul className='flex flex-row gap-0.5'>
           {logo.map((item, index) => (
             <li key={index} data-aos="fade-left" data-aos-delay={index * 200}>
-              <a href={item.link}><img src={item.img} alt="icon" className="w-10 h-10 object-contain transition-transform duration-300 hover:scale-110" /></a>
+              <a href={item.link}><img src={item.img} alt="icon" className="md:w-10 md:h-10 h-8 w-8 object-contain transition-transform duration-300 hover:scale-110" /></a>
             </li>
           ))}
         </ul>
