@@ -1,34 +1,36 @@
-:root {
-  --text-utama: #e0e0e0;
-  --aksen: #222222;
-  --interact: #bb86fc;
-  --text-kecil: 0.8rem;
-  background-color: #121212;
-  font-family: "consolas", "Inter", sans-serif;
+@import "tailwindcss";
+/* Custom Theme */
+@layer base {
+  :root {
+    --text-utama: #e0e0e0;
+    --aksen: #1e1e1e;
+    --interact: #bb86fc;
+    --text-kecil: 0.8rem;
+    background-color: #121212;
+    font-family: "consolas", "Inter", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide scrollbar */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-a {
-  color: var(--text-utama);
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.2s ease-in-out;
-  border-radius: 5%;
-  padding: 4px;
-}
+@layer components {
+  a {
+    @apply text-[var(--text-utama)] text-base transition-all duration-200 ease-in-out rounded p-1;
+  }
 
-a:hover {
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #bb86fc;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-::-webkit-scrollbar {
-  display: none;
+  a:hover {
+    text-shadow: 0 0 10px #ffffff, 0 0 20px var(--interact);
+  }
 }

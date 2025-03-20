@@ -1,4 +1,7 @@
 import "./Project.css"
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const ProjectContainer = ({ title, description, githubLink }) => {
     return (
@@ -15,6 +18,13 @@ export const ProjectContainer = ({ title, description, githubLink }) => {
 };
 
 export default function Project() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Durasi animasi dalam milidetik
+            once: true, // Animasi hanya dijalankan sekali
+        });
+    }, [])
+
     const projects = [
         {
             title: "FoundIT (College Project)",
@@ -39,7 +49,7 @@ export default function Project() {
         <div className="project-section" id="project">
             <ul>
                 {projects.map((project, index) => (
-                    <li key={index}>
+                    <li key={index} data-aos="fade-right">
                         <ProjectContainer
                             title={project.title}
                             description={project.description}

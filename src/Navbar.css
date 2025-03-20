@@ -30,56 +30,15 @@
   max-width: fit-content;
 }
 
-svg {
-  display: none;
-}
-
 .spacer {
   display: none;
 }
 
 .list-container {
-  margin-right: 5rem;
+  margin-right: 2rem;
   gap: 1rem;
   display: flex;
   align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-  html {
-    font-size: 90%;
-  }
-
-  .typing-effect {
-    font-size: 1rem;
-  }
-
-  svg {
-    margin-right: 70px;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .list-container {
-    right: -100%;
-    top: 100%;
-    position: absolute;
-    background-color: #1e1e1e;
-    width: 50%;
-    height: 100vh;
-    transition: 0.3s;
-    align-items: flex-start;
-    flex-direction: column;
-    z-index: 1000;
-  }
-
-  .list-container.active {
-    right: 0%;
-  }
-
-  a {
-    margin-left: 1rem;
-  }
 }
 
 @media (max-width: 450px) {
@@ -93,10 +52,10 @@ svg {
     width: 0px;
   }
   50% {
-    width: 23ch;
+    width: 23.3ch;
   }
   80% {
-    width: 23ch;
+    width: 23.3ch;
   }
   100% {
     width: 0px;

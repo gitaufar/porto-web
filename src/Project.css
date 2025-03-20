@@ -15,19 +15,19 @@ p {
     max-width: 95%;
 }
 
-ul {
+.project-section ul {
     list-style: none; /* Hilangkan bullet default */
     padding-left: 0; /* Hilangkan padding default */
     margin-left: 20px; /* Beri jarak ke kiri */
 }
 
-li {
+.project-section li {
     position: relative;
     padding-left: 45px; /* Tambah jarak untuk bullet besar */
 }
 
 /* Bullet besar */
-li::before {
+.project-section li::before {
     content: "•"; /* Unicode bullet character */
     position: absolute;
     left: 0;
@@ -38,7 +38,7 @@ li::before {
 }
 
 /* Garis vertikal */
-li::after {
+.project-section li::after {
     content: "";
     position: absolute;
     left: 18px; /* Posisikan garis di tengah bullet */
