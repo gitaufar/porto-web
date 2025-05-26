@@ -30,8 +30,8 @@ export default function Project() {
         {
             title: "Portfolio Website (Personal Project)",
             description: "Developing a portfolio website using React.js and Tailwind CSS.",
-            githubLink: "https://a-portos.vercel.app/",
-            type: "website"
+            githubLink: "https://github.com/gitaufar/porto-web.git",
+            type: "github"
         },
         {
             title: "Raion Community Website (Division Project)",

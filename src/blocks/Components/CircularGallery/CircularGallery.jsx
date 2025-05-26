@@ -369,28 +369,36 @@ class App {
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
       {
-        image: `https://miro.medium.com/v2/resize:fit:250/0*BLPDRx_OlVX_rGNQ.png`,
+        image: `./techstack/kotlin_logo.png`,
         text: "Kotlin",
       },
       {
-        image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRzE-Briin8dlSq3VT378jybPdDgrXEIpkw&s`,
+        image: `./techstack/jetpack_logo.jpg`,
         text: "Jetpack Compose",
       },
       {
-        image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTO8H6mRVR83mbxemvDIPW8rbiLZ1b8XVl6Q&s`,
+        image: `./techstack/react_logo.png`,
         text: "React",
       },
       {
-        image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0azWb7Rl8nurvcSMYBgDVjG0YDP56OGYFaA&s`,
+        image: `./techstack/java_logo.png`,
         text: "Java",
       },
       {
-        image: `https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png`,
+        image: `./techstack/js_logo.png`,
         text: "Javascript",
       },
       {
-        image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6fF2ThucsulTRwK_kLrHsVqMpb1NRuydsA&s`,
+        image: `./techstack/firebase_logo.png`,
         text: "Firebase",
+      },
+      {
+        image: `./techstack/nextjs.png`,
+        text: "Next.js",
+      },
+      {
+        image: `./techstack/tailwind_logo.png`,
+        text: "Tailwind CSS",
       },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
