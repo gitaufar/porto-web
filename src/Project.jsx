@@ -2,6 +2,7 @@ import "./Project.css"
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { title } from "framer-motion/client";
 
 export const ProjectContainer = ({ title, description, githubLink, type }) => {
     return (
@@ -26,6 +27,12 @@ export default function Project() {
     }, [])
 
     const projects = [
+        {
+            title: "Portfolio Website (Personal Project)",
+            description: "Developing a portfolio website using React.js and Tailwind CSS.",
+            githubLink: "https://a-portos.vercel.app/",
+            type: "website"
+        },
         {
             title: "Raion Community Website (Division Project)",
             description:
