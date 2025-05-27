@@ -14,12 +14,14 @@ import {
 import "./RollingGallery.css";
 
 const IMGS = [
-  "https://miro.medium.com/v2/resize:fit:250/0*BLPDRx_OlVX_rGNQ.png",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRzE-Briin8dlSq3VT378jybPdDgrXEIpkw&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTO8H6mRVR83mbxemvDIPW8rbiLZ1b8XVl6Q&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0azWb7Rl8nurvcSMYBgDVjG0YDP56OGYFaA&s",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6fF2ThucsulTRwK_kLrHsVqMpb1NRuydsA&s",
+  "./techstack/firebase_logo.png",
+  "./techstack/nextjs.png",
+  "./techstack/react_logo.png",
+  "./techstack/java_logo.png",
+  "./techstack/js_logo.png",
+  "./techstack/kotlin_logo.png",
+  "./techstack/jetpack_logo.jpg",
+  "./techstack/tailwind_logo.png",
 ];
 
 const RollingGallery = ({

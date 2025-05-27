@@ -2,7 +2,6 @@ import "./Project.css"
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { title } from "framer-motion/client";
 
 export const ProjectContainer = ({ title, description, githubLink, type }) => {
     return (
