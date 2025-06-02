@@ -29,14 +29,14 @@ export default function Project() {
         {
             title: "My Movie (Personal Project)",
             description: "A movie website that fetches data from the TMDB API. This project was built to practice working with APIs and managing state related to data fetching using React.js and Tailwind CSS.",
-            githubLink: "https://github.com/gitaufar/porto-web.git",
-            type: "github"
+            githubLink: "https://my-movie-gamma.vercel.app/",
+            type: "website"
         },
         {
             title: "Yess Yogurt (Personal Project)",
-            description: "A website for a yogurt shop built with React.js, TypeScript, and Tailwind CSS. This project was created to deepen my understanding of state management in React using useState.",
-            githubLink: "https://github.com/gitaufar/porto-web.git",
-            type: "github"
+            description: "A website for a yogurt shop built with React.js, TypeScript, and Tailwind CSS. This project was created to deepen my understanding of state management in React using useState adn useContext.",
+            githubLink: "https://yess-ygrt.vercel.app/",
+            type: "website"
         },
         {
             title: "Portfolio Website (Personal Project)",
