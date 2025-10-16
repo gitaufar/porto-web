@@ -2,6 +2,7 @@
 /* Custom Theme */
 @layer base {
   :root {
+    
     --text-utama: #e0e0e0;
     --aksen: #1e1e1e;
     --interact: #bb86fc;

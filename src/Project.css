@@ -1,9 +1,8 @@
 .project-section {
-    min-height: 100vh;
     width: 100%;
     padding-top: 3rem;
     background-color: var(--aksen);
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
 }
 
 h3 {
