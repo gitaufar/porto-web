@@ -14,15 +14,18 @@ export default function Home() {
     spawnStar()
   }, [])
 
+  const [scrollState, setScrollState] = useState({ from: 'home', to: 'about', t: 0 })
+
   useEffect(() => {
     const sections = ['home', 'about', 'experience', 'project', 'contact']
 
-    const getClosestSection = () => {
+    const computeScrollState = () => {
       const centerY = window.innerHeight / 2
       let closest = 'home'
       let minDist = Infinity
+      let closestIndex = 0
 
-      sections.forEach((id) => {
+      sections.forEach((id, idx) => {
         const el = document.getElementById(id)
         if (!el) return
         const rect = el.getBoundingClientRect()
@@ -31,25 +34,61 @@ export default function Home() {
         if (dist < minDist) {
           minDist = dist
           closest = id
+          closestIndex = idx
         }
       })
 
-      return closest
-    }
-
-    const handleScroll = () => {
-      const closest = getClosestSection()
       setActiveSection(closest)
+
+      const currentEl = document.getElementById(sections[closestIndex])
+      if (!currentEl) {
+        setScrollState({ from: closest, to: closest, t: 0 })
+        return
+      }
+
+      const rect = currentEl.getBoundingClientRect()
+      const secCenter = rect.top + rect.height / 2
+
+      // transitioning from previous to current
+      if (secCenter > centerY && closestIndex > 0) {
+        const prevSection = sections[closestIndex - 1]
+        const prevEl = document.getElementById(prevSection)
+        if (prevEl) {
+          const prevRect = prevEl.getBoundingClientRect()
+          const prevCenter = prevRect.top + prevRect.height / 2
+          const totalDist = Math.abs(secCenter - prevCenter)
+          const currentDist = centerY - prevCenter
+          const t = Math.max(0, Math.min(1, currentDist / totalDist))
+          setScrollState({ from: prevSection, to: closest, t })
+          return
+        }
+      }
+
+      // transitioning from current to next
+      if (secCenter < centerY && closestIndex < sections.length - 1) {
+        const nextSection = sections[closestIndex + 1]
+        const nextEl = document.getElementById(nextSection)
+        if (nextEl) {
+          const nextRect = nextEl.getBoundingClientRect()
+          const nextCenter = nextRect.top + nextRect.height / 2
+          const totalDist = Math.abs(nextCenter - secCenter)
+          const currentDist = centerY - secCenter
+          const t = Math.max(0, Math.min(1, currentDist / totalDist))
+          setScrollState({ from: closest, to: nextSection, t })
+          return
+        }
+      }
+
+      setScrollState({ from: closest, to: closest, t: 0 })
     }
 
-    // initial
-    setActiveSection(getClosestSection())
+    computeScrollState()
 
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleScroll)
+    window.addEventListener('scroll', computeScrollState)
+    window.addEventListener('resize', computeScrollState)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      window.removeEventListener('scroll', computeScrollState)
+      window.removeEventListener('resize', computeScrollState)
     }
   }, [])
 
@@ -64,6 +103,7 @@ export default function Home() {
         showShootingStar={showShootingStar} 
         onStarFinished={handleStarFinished}
         activeSection={activeSection}
+        scrollState={scrollState}
       />
 
       {/* Gradient Overlay (moved to App.jsx) */}

@@ -6,7 +6,7 @@ import CameraSetup from "./CameraSetup"
 import ShootingStar from "./ShootingStar"
 import * as THREE from "three"
 
-export default function Scene({ showShootingStar, onStarFinished, activeSection }) {
+export default function Scene({ showShootingStar, onStarFinished, activeSection, scrollState }) {
     return (
         <Canvas
             camera={{ fov: 50 }}
@@ -21,7 +21,7 @@ export default function Scene({ showShootingStar, onStarFinished, activeSection 
                 zIndex: 0,
             }}
         >
-            <CameraSetup activeSection={activeSection} />
+            <CameraSetup activeSection={activeSection} scrollState={scrollState} />
 
             {/* LIGHT */}
             <ambientLight intensity={0.4} />
@@ -31,7 +31,7 @@ export default function Scene({ showShootingStar, onStarFinished, activeSection 
 
             {/* OBJECT */}
             <StarBackground />
-            <Astronaut activeSection={activeSection} />
+            <Astronaut activeSection={activeSection} scrollState={scrollState} />
             <ShootingStar showShootingStar={showShootingStar} onStarFinished={onStarFinished} />
         </Canvas>
     )

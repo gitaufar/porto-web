@@ -68,7 +68,7 @@ export default function Project() {
         },
     ];
     return (
-        <div className="project-section" id="project">
+        <div className="min-h-screen min-w-screen" id="project">
             <ul>
                 {projects.map((project, index) => (
                     <li key={index} data-aos="fade-right">
