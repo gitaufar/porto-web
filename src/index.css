@@ -2,36 +2,38 @@
 /* Custom Theme */
 @layer base {
   :root {
-    
     --text-utama: #e0e0e0;
     --aksen: #1e1e1e;
     --interact: #bb86fc;
     --text-kecil: 0.8rem;
     background-color: #121212;
-    font-family: "consolas", "Inter", sans-serif;
   }
 
   @layer themes {
-  .dark {
-    --text-utama: #e0e0e0;
-    --aksen: #1e1e1e;
-    --interact: #bb86fc;
-    --text-kecil: 0.8rem;
-    background-color: #121212;
-    font-family: "consolas", "Inter", sans-serif;
+    .dark {
+      --text-utama: #e0e0e0;
+      --aksen: #1e1e1e;
+      --interact: #bb86fc;
+      --text-kecil: 0.8rem;
+      background-color: #121212;
+    }
   }
-}
 
-@layer themes {
-  .light {
-    --text-utama: #e0e0e0;
-    --aksen: #1e1e1e;
-    --interact: #bb86fc;
-    --text-kecil: 0.8rem;
-    background-color: #121212;
-    font-family: "consolas", "Inter", sans-serif;
+  @layer themes {
+    .light {
+      --text-utama: #e0e0e0;
+      --aksen: #1e1e1e;
+      --interact: #bb86fc;
+      --text-kecil: 0.8rem;
+      background-color: #121212;
+    }
   }
-}
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Montserrat", sans-serif;
+  }
 
   html {
     scroll-behavior: smooth;
@@ -40,6 +42,7 @@
   body {
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif;
   }
 
   /* Hide scrollbar */
@@ -49,11 +52,4 @@
 }
 
 @layer components {
-  a {
-    @apply text-[var(--text-utama)] text-base transition-all duration-200 ease-in-out rounded p-1;
-  }
-
-  a:hover {
-    text-shadow: 0 0 10px #ffffff, 0 0 20px var(--interact);
-  }
 }

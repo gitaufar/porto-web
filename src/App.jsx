@@ -1,19 +1,24 @@
-import { useState } from 'react'
 import './App.css'
-import Navbar from './Navbar'
-import About from './About'
-import TechStack from './TechStack'
-import Project from './Project'
-import Journey from './Journey'
+import Navbar from './component/Navbar/Navbar'
+import About from './screen/About'
+import Project from './screen/Project'
+import Contact from './screen/Contact'
+import Home from './screen/Home'
+import Experience from './screen/Experience'
 
 function App() {
   return (
     <div>
       <Navbar />
+
+      {/* Global gradient overlay placed above the 3D canvas but below UI content */}
+      <div className="fixed inset-0 pointer-events-none bg-linear-to-b from-black/60 via-black/20 to-black/80 z-1" />
+
+      <Home />
       <About />
-      <TechStack />
+      <Experience />
       <Project />
-      <Journey />
+      <Contact />
     </div>
   )
 }
