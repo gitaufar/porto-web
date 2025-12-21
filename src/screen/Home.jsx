@@ -1,5 +1,6 @@
 import Scene from "../component/Three/Scene"
 import { useState, useEffect } from "react"
+import TextType from "../component/Text/TextType"
 
 export default function Home() {
   const [showShootingStar, setShowShootingStar] = useState(false)
@@ -99,8 +100,8 @@ export default function Home() {
   return (
     <div id="home" className="relative h-screen overflow-hidden">
       {/* Three.js Background */}
-      <Scene 
-        showShootingStar={showShootingStar} 
+      <Scene
+        showShootingStar={showShootingStar}
         onStarFinished={handleStarFinished}
         activeSection={activeSection}
         scrollState={scrollState}
@@ -112,7 +113,14 @@ export default function Home() {
       <div className="relative z-2 flex justify-center h-full px-20 items-center text-white">
         <div className="text-center">
           <h1 className="text-6xl font-bold">M Zhafir Aufar</h1>
-          <p className="mt-4 text-5xl">Frontend & Mobile Developer</p>
+          <TextType
+            text={["Software Engineer", "Frontend Developer", "Mobile Developer"]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            className="mt-4 text-5xl text-white"
+          />
         </div>
       </div>
     </div>

@@ -18,9 +18,9 @@ export default function Astronaut({ activeSection, scrollState }) {
   const positions = {
     home: { pos: [0, -3.5, 0.5], rot: [0, 0, 0], scale: 1.5 },
     about: { pos: [2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
-    experience: { pos: [-2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
+    experience: { pos: [-2, -1.5, -2], rot: [0, 0.4, 0], scale: 0.85 },
     project: { pos: [2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
-    contact: { pos: [-2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
+    contact: { pos: [-2, -2, -2], rot: [0, 0.4, 0], scale: 0.85 },
   }
 
   /* =========================
