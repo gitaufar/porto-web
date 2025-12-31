@@ -18,7 +18,7 @@ export default function LoadingScreen() {
 
             // remove after fade (0.6s + buffer)
             setTimeout(() => setHidden(true), 700)
-          }, 300)
+          }, 1000)
 
           return prev
         }

@@ -153,7 +153,7 @@ export default function Project() {
     return (
         <div className="min-h-screen min-w-screen grid grid-cols-2 items-center" id="project">
             <ul className="w-full">
-                <div className="pt-40 px-20 flex flex-col items-center gap-16">
+                <div className="px-20 flex flex-col items-center gap-16">
                     {projects.map((project, index) => (
                         <li key={index} data-aos="fade-right">
                             <ProjectCard project={project} />
