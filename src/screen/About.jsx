@@ -78,7 +78,7 @@ export default function About() {
           About Me
         </h1>
         <p className="text-white" data-aos="fade-up">I’m an Informatics Engineering student at Universitas Brawijaya with a several real world experience in Software Development.</p>
-        <p className="text-white text-sm" data-aos="fade-up">Enjoying in learning new things, always open to new challenges. Vibe coding, but never blindly copying😁. Always ready to learn and collaborate!</p>
+        <p className="text-gray-500 text-sm border-l-2 pl-2" data-aos="fade-up">Enjoying in learning new things, always open to new challenges. Vibe coding, but never blindly copying😁. Always ready to learn and collaborate!</p>
         <div className="flex gap-6 mt-4">
           <div className='flex flex-col gap-2' data-aos="fade-up">
             <Counter end={20} suffix="+" />
@@ -87,6 +87,10 @@ export default function About() {
           <div className='flex flex-col gap-2' data-aos="fade-up">
             <Counter end={10} suffix="+" />
             <h1 className="text-white text-base">Technology</h1>
+          </div>
+          <div className='flex flex-col gap-2' data-aos="fade-up">
+            <Counter end={6} />
+            <h1 className="text-white text-base">Competition</h1>
           </div>
           <div className='flex flex-col gap-2' data-aos="fade-up">
             <Counter end={2} />
@@ -103,10 +107,14 @@ export default function About() {
         </div>
         {/* button download cv*/}
         <div className="mt-6" data-aos="fade-up">
-          <a href="/cv.pdf" download className="inline-block bg-white text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition">
+          <a
+            href="/cv/cv.pdf"
+            download
+            className="inline-block bg-white text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
+          >
             <div className="flex flex-row items-center gap-2">
               Download CV
-              <FiDownload size={20}/>
+              <FiDownload size={20} />
             </div>
           </a>
         </div>

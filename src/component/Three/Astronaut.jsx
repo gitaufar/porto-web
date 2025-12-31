@@ -2,6 +2,7 @@ import { useGLTF, useAnimations } from "@react-three/drei"
 import { useEffect, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import * as THREE from "three"
+import { Accessor } from "three/examples/jsm/transpiler/AST.js"
 
 export default function Astronaut({ activeSection, scrollState }) {
   const ref = useRef()
@@ -20,7 +21,8 @@ export default function Astronaut({ activeSection, scrollState }) {
     about: { pos: [2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
     experience: { pos: [-2, -1.5, -2], rot: [0, 0.4, 0], scale: 0.85 },
     project: { pos: [2, -2, -2], rot: [0, 0, 0], scale: 0.85 },
-    contact: { pos: [-2, -2, -2], rot: [0, 0.4, 0], scale: 0.85 },
+    // For contact we want a close-up half-body pose — centered and larger
+    contact: { pos: [0, -3.5, 0.5], rot: [0, 0, 0], scale: 1.5 },
   }
 
   /* =========================
@@ -43,6 +45,13 @@ export default function Astronaut({ activeSection, scrollState }) {
       return
     }
 
+    // CONTACT → idle (always looping)
+    if (activeSection === "contact") {
+      actions.idle?.reset().fadeIn(0.6).play()
+      actions.floating?.fadeOut(0.6)
+      return
+    }
+
     // OTHER SECTIONS
     const prev = prevSection.current
     const prevX = positions[prev]?.pos[0] ?? 0
@@ -55,7 +64,9 @@ export default function Astronaut({ activeSection, scrollState }) {
       prev !== "home" &&
       activeSection !== "home" &&
       prev !== "experience" &&
-      activeSection !== "experience"
+      activeSection !== "experience" &&
+      prev !== "contact" &&
+      activeSection !== "contact"
 
     // ❗ spin transition handled elsewhere
     if (isCrossSideTransition) return
@@ -64,6 +75,7 @@ export default function Astronaut({ activeSection, scrollState }) {
     actions.floating?.reset().fadeIn(0.6).play()
     actions.wave?.fadeOut(0.6)
     actions.moon_walk?.fadeOut(0.6)
+    actions.idle?.fadeOut(0.6)
   }, [actions, activeSection])
 
   /* =========================

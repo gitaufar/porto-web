@@ -12,7 +12,7 @@ export default function CameraSetup({ activeSection, scrollState }) {
     experience: [-2.5, 0.2, 4],
     project: [2.5, 0.2, 4],
     journey: [-2.5, 0.2, 4],
-    contact: [-2.5, 0.2, 4],
+    contact: [0, 0.5, 3],
   }
 
   const defaultPos = cameraPositions.home

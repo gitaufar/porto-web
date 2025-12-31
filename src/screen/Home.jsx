@@ -1,10 +1,11 @@
 import Scene from "../component/Three/Scene"
 import { useState, useEffect } from "react"
 import TextType from "../component/Text/TextType"
+import { useScroll } from '../utils/ScrollProvider.jsx'
 
 export default function Home() {
   const [showShootingStar, setShowShootingStar] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const { activeSection, scrollState, experienceIndex } = useScroll() || { activeSection: 'home', scrollState: { from: 'home', to: 'about', t: 0 }, experienceIndex: 0 }
 
   useEffect(() => {
     const spawnStar = () => {
@@ -15,83 +16,7 @@ export default function Home() {
     spawnStar()
   }, [])
 
-  const [scrollState, setScrollState] = useState({ from: 'home', to: 'about', t: 0 })
-
-  useEffect(() => {
-    const sections = ['home', 'about', 'experience', 'project', 'contact']
-
-    const computeScrollState = () => {
-      const centerY = window.innerHeight / 2
-      let closest = 'home'
-      let minDist = Infinity
-      let closestIndex = 0
-
-      sections.forEach((id, idx) => {
-        const el = document.getElementById(id)
-        if (!el) return
-        const rect = el.getBoundingClientRect()
-        const secCenter = rect.top + rect.height / 2
-        const dist = Math.abs(secCenter - centerY)
-        if (dist < minDist) {
-          minDist = dist
-          closest = id
-          closestIndex = idx
-        }
-      })
-
-      setActiveSection(closest)
-
-      const currentEl = document.getElementById(sections[closestIndex])
-      if (!currentEl) {
-        setScrollState({ from: closest, to: closest, t: 0 })
-        return
-      }
-
-      const rect = currentEl.getBoundingClientRect()
-      const secCenter = rect.top + rect.height / 2
-
-      // transitioning from previous to current
-      if (secCenter > centerY && closestIndex > 0) {
-        const prevSection = sections[closestIndex - 1]
-        const prevEl = document.getElementById(prevSection)
-        if (prevEl) {
-          const prevRect = prevEl.getBoundingClientRect()
-          const prevCenter = prevRect.top + prevRect.height / 2
-          const totalDist = Math.abs(secCenter - prevCenter)
-          const currentDist = centerY - prevCenter
-          const t = Math.max(0, Math.min(1, currentDist / totalDist))
-          setScrollState({ from: prevSection, to: closest, t })
-          return
-        }
-      }
-
-      // transitioning from current to next
-      if (secCenter < centerY && closestIndex < sections.length - 1) {
-        const nextSection = sections[closestIndex + 1]
-        const nextEl = document.getElementById(nextSection)
-        if (nextEl) {
-          const nextRect = nextEl.getBoundingClientRect()
-          const nextCenter = nextRect.top + nextRect.height / 2
-          const totalDist = Math.abs(nextCenter - secCenter)
-          const currentDist = centerY - secCenter
-          const t = Math.max(0, Math.min(1, currentDist / totalDist))
-          setScrollState({ from: closest, to: nextSection, t })
-          return
-        }
-      }
-
-      setScrollState({ from: closest, to: closest, t: 0 })
-    }
-
-    computeScrollState()
-
-    window.addEventListener('scroll', computeScrollState)
-    window.addEventListener('resize', computeScrollState)
-    return () => {
-      window.removeEventListener('scroll', computeScrollState)
-      window.removeEventListener('resize', computeScrollState)
-    }
-  }, [])
+  // scroll state and activeSection are provided by ScrollProvider (Lenis)
 
   const handleStarFinished = () => {
     setShowShootingStar(false)
@@ -105,6 +30,7 @@ export default function Home() {
         onStarFinished={handleStarFinished}
         activeSection={activeSection}
         scrollState={scrollState}
+        experienceIndex={experienceIndex}
       />
 
       {/* Gradient Overlay (moved to App.jsx) */}

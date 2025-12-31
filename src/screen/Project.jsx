@@ -1,20 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-export const ProjectContainer = ({ title, description, githubLink, type }) => {
-    return (
-        <div className="project-container">
-            <h3>{title}</h3>
-            <p>{description}</p>
-            {githubLink && (
-                <a className="git-link" href={githubLink}>
-                    {type === "github" ? "Github" : "Website"}
-                </a>
-            )}
-        </div>
-    );
-};
+import {ProjectCard} from "../component/Card/ProjectCard";
 
 export default function Project() {
     useEffect(() => {
@@ -26,60 +13,153 @@ export default function Project() {
 
     const projects = [
         {
-            title: "SwaraIbu (Competition Project)",
+            title: "Magna Partners V2",
             description:
-                "SwaraIbu is an application designed to assist pregnant mothers in monitoring fetal health through voice recognition technology. The application allows users to record and analyze fetal sounds, providing insights into the baby's condition. SwaraIbu is developed using Kotlin and Jetpack Compose for the user interface, with Firebase as the backend service.",
-            githubLink: "https://github.com/gitaufar/swaraibu-app.git",
-            type: "github"
-        },
-        {
-            title: "Portfolio Website (Personal Project)",
-            description: "Developing a portfolio website using React.js and Tailwind CSS.",
-            githubLink: "https://github.com/gitaufar/porto-web.git",
-            type: "github"
-        },
-        {
-            title: "Raion Community Website (Division Project)",
-            description:
-                "Developing the Raion Community website using Next.js and Tailwind CSS. In collaboration with UI/UX designers and the product manager.",
-            githubLink: "https://raion-web-migrate.vercel.app/",
+                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            githubLink: "https://magnapartners.org/",
+            image:"/project/magnav2.png",
+            techStack: [
+                {
+                    name: "Next.js",
+                    logo: "/techstack/nextjs.png",
+                },
+                {
+                    name: "Tailwind CSS",
+                    logo: "/techstack/tailwind_logo.png",
+                },
+                {
+                    name: "Supabase",
+                    logo: "/techstack/supabase_logo.png",
+                }, 
+                {
+                    name: "TypeScript",
+                    logo: "/techstack/typescript_logo.png",
+                },
+                {
+                    name: "Bruno",
+                    logo: "/techstack/bruno_logo.png",
+                }
+            ],
             type: "website"
         },
         {
-            title: "FoundIT (College Project)",
-            description:
-                "FoundIT is an application designed to centralize information on lost and found items, helping users report and search for missing belongings. The application is developed using Kotlin with the Jetpack Compose framework for the user interface. For data storage, FoundIT utilizes an MSSQL database, which is currently local.",
-            githubLink: "https://github.com/gitaufar/FoundIT.git",
-            type: "github"
+            title: "Portfolio Website",
+            description: "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            githubLink: "https://aufarzhfr.vercel.app/",
+            image:"/project/portofolio.png",
+            techStack: [
+                {
+                    name: "React.js",
+                    logo: "/techstack/react_logo.png",
+                },
+                {
+                    name: "Tailwind CSS",
+                    logo: "/techstack/tailwind_logo.png",
+                },
+                {
+                    name: "TypeScript",
+                    logo: "/techstack/typescript_logo.png",
+                },
+                {
+                    name: "Three Js",
+                    logo: "/techstack/threejs_logo.png",
+                }
+            ],
+            type: "website"
         },
         {
-            title: "SafeSpeak (Competition Project)",
+            title: "Raion Community Website",
             description:
-                "SafeSpeak is my second project, developed within one week. This application is designed to report cases of sexual harassment and help users diagnose whether they have experienced harassment. SafeSpeak also features an emergency button that sends notifications to the nearest community, allowing them to provide immediate assistance in case of harassment. The application is built using Kotlin and XML for the user interface, with Firebase as the backend service.",
-            githubLink: "https://github.com/gitaufar/Raion_HackJam.git",
-            type: "github"
+                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            githubLink: "https://raion.ub.ac.id",
+            image:"/project/raion.png",
+            techStack: [
+                {
+                    name: "Next.js",
+                    logo: "/techstack/nextjs.png",
+                },
+                {
+                    name: "Tailwind CSS",
+                    logo: "/techstack/tailwind_logo.png",
+                },
+                {
+                    name: "TypeScript",
+                    logo: "/techstack/typescript_logo.png",
+                }
+            ],
+            type: "website"
         },
         {
-            title: "StuntCare (Internship Project at Raion Community)",
+            title: "Pemdesa Wringinanom Website",
             description:
-                "StuntCare is my first project, designed for pregnant mothers to help prevent stunting in newborns. This application provides personalized recommendations on nutrition, exercise, and precautions based on the data provided by the user. By following these guidelines, mothers can ensure their child's healthy growth. StuntCare is built using Kotlin and XML for the user interface, with Firebase as the backend service.",
-            githubLink: "https://github.com/gitaufar/StuntCare.git",
-            type: "github"
+                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            githubLink: "https://www.pemdeswringinanom.web.id/",
+            image:"/project/wringinanom.png",
+            techStack: [
+                {
+                    name: "Next.js",
+                    logo: "/techstack/nextjs.png",
+                },
+                {
+                    name: "Tailwind CSS",
+                    logo: "/techstack/tailwind_logo.png",
+                },
+                {
+                    name: "Supabase",
+                    logo: "/techstack/supabase_logo.png",
+                }, 
+                {
+                    name: "TypeScript",
+                    logo: "/techstack/typescript_logo.png",
+                },
+            ],
+            type: "website"
+        },
+        {
+            title: "Optimind",
+            description:
+                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            githubLink: "https://technoday.vercel.app/",
+            image:"/project/optimind.png",
+            techStack: [
+                {
+                    name: "Next.js",
+                    logo: "/techstack/nextjs.png",
+                },
+                {
+                    name: "Tailwind CSS",
+                    logo: "/techstack/tailwind_logo.png",
+                },
+                {
+                    name: "Supabase",
+                    logo: "/techstack/supabase_logo.png",
+                }, 
+                {
+                    name: "TypeScript",
+                    logo: "/techstack/typescript_logo.png",
+                },
+                {
+                    name: "Fast API",
+                    logo: "/techstack/fastapi_logo.png",
+                },
+                {
+                    name: "Hugging Face",
+                    logo: "/techstack/huggingface_logo.png",
+                }
+            ],
+            type: "website"
         },
     ];
     return (
-        <div className="min-h-screen min-w-screen" id="project">
-            <ul>
-                {projects.map((project, index) => (
-                    <li key={index} data-aos="fade-right">
-                        <ProjectContainer
-                            title={project.title}
-                            description={project.description}
-                            githubLink={project.githubLink}
-                            type={project.type}
-                        />
-                    </li>
-                ))}
+        <div className="min-h-screen min-w-screen grid grid-cols-2 items-center" id="project">
+            <ul className="w-full">
+                <div className="pt-40 px-20 flex flex-col items-center gap-16">
+                    {projects.map((project, index) => (
+                        <li key={index} data-aos="fade-right">
+                            <ProjectCard project={project} />
+                        </li>
+                    ))}
+                </div>
             </ul>
         </div>
     )
