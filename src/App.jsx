@@ -6,6 +6,7 @@ import Contact from './screen/Contact'
 import Home from './screen/Home'
 import Experience from './screen/Experience'
 import LoadingScreen from './screen/LoadingScreen'
+import Techstack from './screen/Techstack'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <About />
       <Experience />
       <Project />
+      <Techstack />
       <Contact />
     </div>
   )
