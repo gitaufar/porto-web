@@ -83,22 +83,22 @@ export default function About() {
 
           {/* Responsive counters grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-            <div className='flex flex-col gap-1' data-aos="fade-up">
-              <Counter end={30} suffix="+" />
-              <span className="text-sm text-slate-300">Projects Completed</span>
-            </div>
-            <div className='flex flex-col gap-1' data-aos="fade-up">
-              <Counter end={50} suffix="+" />
-              <span className="text-sm text-slate-300">Technologies</span>
-            </div>
-            <div className='flex flex-col gap-1' data-aos="fade-up">
-              <Counter end={10} suffix="+" />
-              <span className="text-sm text-slate-300">Certifications</span>
-            </div>
-            <div className='flex flex-col gap-1' data-aos="fade-up">
-              <Counter end={3} />
-              <span className="text-sm text-slate-300">Research Papers</span>
-            </div>
+            <div className='flex flex-col gap-2' data-aos="fade-up">
+            <Counter end={20} suffix="+" />
+            <h1 className="text-white text-base">Projects</h1>
+          </div>
+          <div className='flex flex-col gap-2' data-aos="fade-up">
+            <Counter end={20} suffix="+" />
+            <h1 className="text-white text-base">Technology</h1>
+          </div>
+          <div className='flex flex-col gap-2' data-aos="fade-up">
+            <Counter end={6} />
+            <h1 className="text-white text-base">Competition</h1>
+          </div>
+          <div className='flex flex-col gap-2' data-aos="fade-up">
+            <Counter end={2} />
+            <h1 className="text-white text-base">Internship Experience</h1>
+          </div>
           </div>
 
           <div className="h-0.5 w-full bg-white/20 my-6"></div>
