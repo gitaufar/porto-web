@@ -106,7 +106,7 @@ export default function About() {
           <div className="flex flex-col">
             <p className="text-white font-semibold text-lg" data-aos="fade-up">Universitas Brawijaya</p>
             <p className="text-white" data-aos="fade-up">Bachelor of Informatics Engineering</p>
-            <p className="text-white text-sm" data-aos="fade-up">3.72 GPA</p>
+            <p className="text-white text-sm" data-aos="fade-up">3.74/4.00 GPA</p>
             <p className="text-white text-sm" data-aos="fade-up">2023 - 2027</p>
           </div>
 
