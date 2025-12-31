@@ -64,7 +64,7 @@ export default function About() {
     }, [end, duration]);
 
     return (
-      <h2 ref={ref} className="text-white font-bold text-2xl">
+      <h2 ref={ref} className="text-white font-bold text-2xl md:text-3xl lg:text-4xl">
         {value}
         {suffix}
       </h2>
@@ -72,55 +72,61 @@ export default function About() {
   }
 
   return (
-    <div className="grid grid-cols-2 min-w-screen min-h-screen">
-      <div className="flex flex-col pl-24 justify-center" id="about">
-        <h1 className="text-white text-4xl font-bold" data-aos="fade-up">
-          About Me
-        </h1>
-        <p className="text-white" data-aos="fade-up">I’m an Informatics Engineering student at Universitas Brawijaya with a several real world experience in Software Development.</p>
-        <p className="text-gray-500 text-sm border-l-2 pl-2" data-aos="fade-up">Enjoying in learning new things, always open to new challenges. Vibe coding, but never blindly copying😁. Always ready to learn and collaborate!</p>
-        <div className="flex gap-6 mt-4">
-          <div className='flex flex-col gap-2' data-aos="fade-up">
-            <Counter end={20} suffix="+" />
-            <h1 className="text-white text-base">Projects</h1>
-          </div>
-          <div className='flex flex-col gap-2' data-aos="fade-up">
-            <Counter end={10} suffix="+" />
-            <h1 className="text-white text-base">Technology</h1>
-          </div>
-          <div className='flex flex-col gap-2' data-aos="fade-up">
-            <Counter end={6} />
-            <h1 className="text-white text-base">Competition</h1>
-          </div>
-          <div className='flex flex-col gap-2' data-aos="fade-up">
-            <Counter end={2} />
-            <h1 className="text-white text-base">Internship Experience</h1>
-          </div>
-        </div>
-        <div className="h-0.5 w-full bg-white my-6"></div>
-        <h1 className="text-white font-bold text-xl mb-4" data-aos="fade-up">Education</h1>
-        <div className="flex flex-col">
-          <p className="text-white font-semibold text-xl" data-aos="fade-up">Universitas Brawijaya</p>
-          <p className="text-white" data-aos="fade-up">Bachelor of Informatics Engineering</p>
-          <p className="text-white text-sm" data-aos="fade-up">3.72 GPA</p>
-          <p className="text-white text-sm" data-aos="fade-up">2023 - 2027</p>
-        </div>
-        {/* button download cv*/}
-        <div className="mt-6" data-aos="fade-up">
-          <a
-            href="/cv/cv.pdf"
-            download
-            className="inline-block bg-white text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
-          >
-            <div className="flex flex-row items-center gap-2">
-              Download CV
-              <FiDownload size={20} />
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-w-screen min-h-screen">
+      <div className="flex flex-col px-6 md:pl-24 justify-center" id="about">
+        <div className="max-w-xl">
+          <h1 className="text-white text-3xl md:text-4xl font-bold" data-aos="fade-up">
+            About Me
+          </h1>
+          <p className="text-white mt-3 text-sm md:text-base" data-aos="fade-up">I’m an Informatics Engineering student at Universitas Brawijaya with several real-world experiences in software development.</p>
+          <p className="text-slate-300 text-sm border-l-2 pl-2 mt-4" data-aos="fade-up">Enjoy learning new things, always open to new challenges. Vibe coding, but never blindly copying — always ready to learn and collaborate!</p>
+
+          {/* Responsive counters grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            <div className='flex flex-col gap-1' data-aos="fade-up">
+              <Counter end={30} suffix="+" />
+              <span className="text-sm text-slate-300">Projects Completed</span>
             </div>
-          </a>
+            <div className='flex flex-col gap-1' data-aos="fade-up">
+              <Counter end={50} suffix="+" />
+              <span className="text-sm text-slate-300">Technologies</span>
+            </div>
+            <div className='flex flex-col gap-1' data-aos="fade-up">
+              <Counter end={10} suffix="+" />
+              <span className="text-sm text-slate-300">Certifications</span>
+            </div>
+            <div className='flex flex-col gap-1' data-aos="fade-up">
+              <Counter end={3} />
+              <span className="text-sm text-slate-300">Research Papers</span>
+            </div>
+          </div>
+
+          <div className="h-0.5 w-full bg-white/20 my-6"></div>
+          <h1 className="text-white font-bold text-xl mb-4" data-aos="fade-up">Education</h1>
+          <div className="flex flex-col">
+            <p className="text-white font-semibold text-lg" data-aos="fade-up">Universitas Brawijaya</p>
+            <p className="text-white" data-aos="fade-up">Bachelor of Informatics Engineering</p>
+            <p className="text-white text-sm" data-aos="fade-up">3.72 GPA</p>
+            <p className="text-white text-sm" data-aos="fade-up">2023 - 2027</p>
+          </div>
+
+          {/* button download cv*/}
+          <div className="mt-6" data-aos="fade-up">
+            <a
+              href="/cv/cv.pdf"
+              download
+              className="inline-block bg-white text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
+            >
+              <div className="flex flex-row items-center gap-2">
+                Download CV
+                <FiDownload size={20} />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div>
+      <div className="hidden md:block">
 
       </div>
     </div>

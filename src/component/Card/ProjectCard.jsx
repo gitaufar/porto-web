@@ -29,19 +29,19 @@ export const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="h-137.5 flex">
-      <div className="py-4 flex items-center justify-center" style={{ perspective: '1000px' }}>
+    <div className="w-full max-w-xl">
+      <div className="py-4" style={{ perspective: '1000px' }}>
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="flex items-center justify-center relative transition-all duration-200 ease-linear"
+          className="relative transition-all duration-200 ease-linear mx-auto"
           style={{
             transformStyle: 'preserve-3d',
             transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`
           }}
         >
-          <div className="transform-3d *:transform-3d relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:border-white/20 border-black/20 shadow-lg w-full sm:w-100 h-130 lg:h-135 flex flex-col justify-between rounded-xl p-5 border bg-slate-900/80 backdrop-blur-sm">
+          <div className="transform-3d *:transform-3d relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:border-white/20 border-black/20 shadow-lg w-full flex flex-col justify-between rounded-xl p-5 border bg-slate-900/80 backdrop-blur-sm">
             
             {/* Image Section */}
             <div
@@ -55,7 +55,7 @@ export const ProjectCard = ({ project }) => {
                 src={project.image}
                 height="1000"
                 width="1000"
-                className="h-56 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                className="h-40 md:h-56 lg:h-64 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                 alt={`${project.title} thumbnail`}
               />
             </div>
@@ -63,7 +63,7 @@ export const ProjectCard = ({ project }) => {
             {/* Title Section */}
             <div className="flex justify-between items-center mt-6">
               <div
-                className="w-fit transition duration-200 ease-linear text-2xl font-bold text-neutral-600 dark:text-white hover:underline"
+                className="w-fit transition duration-200 ease-linear text-xl md:text-2xl font-bold text-neutral-600 dark:text-white hover:underline"
                 style={{
                   transform: `translateZ(30px)`,
                   transformStyle: 'preserve-3d'
@@ -81,7 +81,7 @@ export const ProjectCard = ({ project }) => {
 
             {/* Description */}
             <p
-              className="w-fit transition duration-200 ease-linear text-neutral-500 text-xs lg:text-md max-w-full pr-2 text-justify mt-2 dark:text-neutral-300 line-clamp-4"
+              className="w-fit transition duration-200 ease-linear text-neutral-400 text-sm md:text-base max-w-full pr-2 text-justify mt-2 dark:text-neutral-300 line-clamp-4"
               style={{
                 transform: `translateZ(25px)`,
                 transformStyle: 'preserve-3d'
@@ -108,7 +108,7 @@ export const ProjectCard = ({ project }) => {
                         width="40"
                         src={tech.logo}
                         alt={tech.name}
-                        className="relative m-0! h-10 w-10 rounded-full border-2 border-white/10 bg-white object-cover object-center p-0! transition duration-500 group-hover:z-30 group-hover:scale-110 shadow-md shadow-black/20"
+                        className="relative m-0! h-8 w-8 md:h-10 md:w-10 rounded-full border-2 border-white/10 bg-white object-cover object-center p-0! transition duration-500 group-hover:z-30 group-hover:scale-110 shadow-md shadow-black/20"
                       />
                     </div>
                   ))}

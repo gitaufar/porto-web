@@ -36,16 +36,16 @@ export default function Home() {
       {/* Gradient Overlay (moved to App.jsx) */}
 
       {/* UI Content */}
-      <div className="relative z-2 flex justify-center h-full px-20 items-center text-white">
+      <div className="relative z-2 flex justify-center h-full px-6 md:px-20 items-center text-white">
         <div className="text-center">
-          <h1 className="text-6xl font-bold">M Zhafir Aufar</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">M Zhafir Aufar</h1>
           <TextType
             text={["Software Engineer", "Frontend Developer", "Mobile Developer"]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
-            className="mt-4 text-5xl text-white"
+            className="mt-4 text-2xl md:text-5xl text-white"
           />
         </div>
       </div>

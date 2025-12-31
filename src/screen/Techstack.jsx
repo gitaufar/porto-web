@@ -77,10 +77,10 @@ const Techstack = () => {
 
     return (
         <div id="techstack" className="relative z-2 flex flex-col justify-center items-center min-h-screen min-w-screen gap-12">
-            <h1 className="text-6xl font-bold text-white" style={{
+            <h1 className="text-center text-3xl md:text-4xl lg:text-6xl font-bold text-white" style={{
                 textShadow: '0 4px 16px rgba(0,0,0,0.6)',
             }}>Tools and Tech Stacks that I used</h1>
-            <div className="flex flex-col max-w-4xl gap-12 px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+            <div className="flex flex-col max-w-xs md:max-w-2xl lg:max-w-4xl gap-12 px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
                 <TechRow items={techStackRow1} direction="right" />
                 <TechRow items={techStackRow2} direction="left" />
                 <TechRow items={techStackRow3} direction="right" />

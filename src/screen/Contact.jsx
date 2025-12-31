@@ -24,20 +24,20 @@ const Contact = () => {
 
 
   return (
-    <section id='contact' className='min-h-screen min-w-screen py-20 px-6 md:px-10 lg:px-20 flex items-center justify-center'>
-      <div className="relative z-2 flex justify-center h-full px-20 items-center text-white">
-        <div className="text-center flex flex-col items-center gap-6">
-          <h1 className="text-6xl text-white flex justify-center" style={{
+    <section id='contact' className='min-h-screen min-w-screen py-12 md:py-20 px-4 md:px-6 lg:px-20 flex items-center justify-center'>
+      <div className="relative z-2 flex justify-center h-full px-6 md:px-20 items-center text-white">
+        <div className="text-center flex flex-col items-center gap-6 max-w-xl">
+          <h1 className="text-4xl md:text-6xl text-white flex justify-center" style={{
             textShadow: '0 4px 16px rgba(0,0,0,0.6)',
           }}>
             Let's work
           </h1>
-          <h1 className="text-6xl" style={{
+          <h1 className="text-4xl md:text-6xl" style={{
             textShadow: '0 4px 16px rgba(0,0,0,0.6)',
           }}>together</h1>
-          <div className="inline-block px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+          <div className="inline-block px-4 md:px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
             <h2
-              className="text-4xl text-white font-medium underline"
+              className="text-2xl md:text-4xl text-white font-medium underline"
               style={{
                 textShadow: '0 4px 16px rgba(0,0,0,0.6)',
               }}
