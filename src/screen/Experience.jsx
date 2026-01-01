@@ -86,11 +86,81 @@ const Experience = () => {
     }
   ];
 
-  // Desktop scroll storytelling animation
+  // Scroll storytelling animation
   useLayoutEffect(() => {
     const mm = gsap.matchMedia()
-    
-    mm.add("(min-width: 768px)", () => {
+
+    // Tablet (centered cards)
+    mm.add("(min-width: 640px) and (max-width: 1023px)", () => {
+      const section = sectionRef.current
+      const cardsContainer = cardsContainerRef.current
+      if (!section || !cardsContainer) return
+
+      const cards = gsap.utils.toArray(cardsContainer.querySelectorAll('.experience-card'))
+      if (!cards.length) return
+
+      const numCards = cards.length
+      const scrollPerCard = window.innerHeight * 0.7
+      const totalScroll = scrollPerCard * numCards
+
+      // Tablet: cards centered
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          xPercent: -50,
+          yPercent: -50,
+          x: index === 0 ? 0 : window.innerWidth,
+          zIndex: numCards - index,
+          opacity: index === 0 ? 1 : 0,
+          scale: 1,
+          transformOrigin: 'center center',
+        })
+      })
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: `+=${totalScroll}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.5,
+          id: 'experience-pin-tablet',
+        }
+      })
+
+      cards.forEach((card, index) => {
+        if (index === 0) return
+        const cardDuration = 1 / (numCards - 1)
+        const startTime = (index - 1) * cardDuration
+
+        tl.set(card, { zIndex: numCards + index }, startTime)
+        tl.to(cards[index - 1], {
+          x: -50,
+          opacity: 0.2,
+          scale: 0.85,
+          filter: 'blur(4px)',
+          duration: cardDuration,
+          ease: 'power1.inOut',
+        }, startTime)
+        tl.fromTo(card,
+          { x: window.innerWidth, opacity: 0, scale: 0.9 },
+          { x: 0, opacity: 1, scale: 1, duration: cardDuration, ease: 'power1.inOut' },
+          startTime
+        )
+      })
+
+      return () => {
+        ScrollTrigger.getAll().forEach(t => {
+          if (t.vars.id?.startsWith('experience-')) t.kill()
+        })
+      }
+    })
+
+    // Desktop small (cards slightly to the right)
+    mm.add("(min-width: 1024px) and (max-width: 1439px)", () => {
       const section = sectionRef.current
       const cardsContainer = cardsContainerRef.current
       if (!section || !cardsContainer) return
@@ -102,23 +172,22 @@ const Experience = () => {
       const scrollPerCard = window.innerHeight * 0.8
       const totalScroll = scrollPerCard * numCards
 
-      // Set initial state - all cards start off-screen to the right
+      // Small desktop: cards positioned slightly to the right
       cards.forEach((card, index) => {
         gsap.set(card, {
           position: 'absolute',
           top: '50%',
-          left: '50%',
-          xPercent: 30,
+          left: '65%',
+          xPercent: -30,
           yPercent: -50,
           x: index === 0 ? 0 : window.innerWidth,
-          zIndex: numCards - index, // First card highest z-index initially
+          zIndex: numCards - index,
           opacity: index === 0 ? 1 : 0,
           scale: 1,
           transformOrigin: 'center center',
         })
       })
 
-      // Create a timeline for the card animations
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -127,7 +196,76 @@ const Experience = () => {
           pin: true,
           pinSpacing: true,
           scrub: 0.5,
-          id: 'experience-pin',
+          id: 'experience-pin-desktop-sm',
+        }
+      })
+
+      cards.forEach((card, index) => {
+        if (index === 0) return
+        const cardDuration = 1 / (numCards - 1)
+        const startTime = (index - 1) * cardDuration
+
+        tl.set(card, { zIndex: numCards + index }, startTime)
+        tl.to(cards[index - 1], {
+          x: -10,
+          opacity: 0.2,
+          scale: 0.85,
+          filter: 'blur(4px)',
+          duration: cardDuration,
+          ease: 'power1.inOut',
+        }, startTime)
+        tl.fromTo(card,
+          { x: window.innerWidth, opacity: 0, scale: 0.9 },
+          { x: 0, opacity: 1, scale: 1, duration: cardDuration, ease: 'power1.inOut' },
+          startTime
+        )
+      })
+
+      return () => {
+        ScrollTrigger.getAll().forEach(t => {
+          if (t.vars.id?.startsWith('experience-')) t.kill()
+        })
+      }
+    })
+
+    // Desktop large (cards more to the right)
+    mm.add("(min-width: 1440px)", () => {
+      const section = sectionRef.current
+      const cardsContainer = cardsContainerRef.current
+      if (!section || !cardsContainer) return
+
+      const cards = gsap.utils.toArray(cardsContainer.querySelectorAll('.experience-card'))
+      if (!cards.length) return
+
+      const numCards = cards.length
+      const scrollPerCard = window.innerHeight * 0.8
+      const totalScroll = scrollPerCard * numCards
+
+      // Large desktop: cards positioned to the right
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          xPercent: 30,
+          yPercent: -50,
+          x: index === 0 ? 0 : window.innerWidth,
+          zIndex: numCards - index,
+          opacity: index === 0 ? 1 : 0,
+          scale: 1,
+          transformOrigin: 'center center',
+        })
+      })
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: `+=${totalScroll}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.5,
+          id: 'experience-pin-desktop-lg',
         }
       })
 
@@ -182,17 +320,17 @@ const Experience = () => {
   }, [])
 
   return (
-    <div id="experience" ref={sectionRef} className='min-h-screen'>
-      {/* Title - fixed at top during scroll */}
-      <div className="absolute top-20 left-0 right-0 z-10 text-center">
-        <h1 className="text-white text-4xl md:text-5xl font-bold mb-2">
+    <div id="experience" ref={sectionRef} className='min-h-screen relative mt-20 md:mt-0'>
+      {/* Title - responsive positioning */}
+      <div className="md:absolute md:top-30 lg:top-20 2xl:top-30 z-10 text-center md:text-left lg:text-left 2xl:text-center md:left-10 lg:left-16 2xl:left-0 2xl:right-0">
+        <h1 className="text-white text-4xl 2xl:text-5xl font-bold mb-2">
           Work Experience
         </h1>
-        <div className="w-24 h-1 bg-white mx-auto mt-4"></div>
+        <div className="w-24 h-1 bg-white mx-auto md:mx-0 2xl:mx-auto mt-4"></div>
       </div>
 
       {/* Mobile simplified list */}
-      <div className="md:hidden pt-24 px-6 flex flex-col gap-4">
+      <div className="sm:hidden pt-24 px-6 flex flex-col gap-4">
         {experiences.map((exp, idx) => (
           <div key={idx} data-aos="fade-up" className="p-4 bg-slate-900/90 border border-white/10 rounded-lg">
             <div className="flex flex-col items-start">
@@ -205,10 +343,10 @@ const Experience = () => {
         ))}
       </div>
 
-      {/* Desktop scroll storytelling cards */}
+      {/* Tablet/Desktop scroll storytelling cards */}
       <div 
         ref={cardsContainerRef}
-        className="hidden md:block relative w-full h-screen"
+        className="hidden sm:block relative w-full h-screen"
         style={{ perspective: '1000px' }}
       >
         {experiences.map((exp, index) => (
