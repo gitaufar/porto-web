@@ -322,11 +322,11 @@ const Experience = () => {
   return (
     <div id="experience" ref={sectionRef} className='min-h-screen relative mt-20 md:mt-0'>
       {/* Title - responsive positioning */}
-      <div className="md:absolute md:top-30 lg:top-20 2xl:top-30 z-10 text-center md:text-left lg:text-left 2xl:text-center md:left-10 lg:left-16 2xl:left-0 2xl:right-0">
+      <div className="md:absolute md:top-30 lg:top-20 2xl:top-30 z-10 text-center md:left-0 md:right-0 2xl:text-center lg:right-16 2xl:left-0 2xl:right-0">
         <h1 className="text-white text-4xl 2xl:text-5xl font-bold mb-2">
           Work Experience
         </h1>
-        <div className="w-24 h-1 bg-white mx-auto md:mx-0 2xl:mx-auto mt-4"></div>
+        <div className="w-24 h-1 bg-white mx-auto lg:ml-auto lg:mr-0 2xl:mx-auto mt-4"></div>
       </div>
 
       {/* Mobile simplified list */}

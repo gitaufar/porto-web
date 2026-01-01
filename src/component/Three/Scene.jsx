@@ -19,6 +19,7 @@ export default function Scene({ showShootingStar, onStarFinished, activeSection,
                 position: "fixed",
                 inset: 0,
                 zIndex: 0,
+                pointerEvents: 'none',
             }}
         >
             <CameraSetup activeSection={activeSection} scrollState={scrollState} />
