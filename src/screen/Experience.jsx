@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useRef, useLayoutEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ExperienceCard from '../component/Card/ExperienceCard'
-import ScrollStack, { ScrollStackItem } from '../component/Scroll/ScrollStack'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Experience = () => {
+  const sectionRef = useRef(null)
+  const cardsContainerRef = useRef(null)
 
   const experiences = [
     {
@@ -81,39 +86,140 @@ const Experience = () => {
     }
   ];
 
+  // Desktop scroll storytelling animation
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia()
+    
+    mm.add("(min-width: 768px)", () => {
+      const section = sectionRef.current
+      const cardsContainer = cardsContainerRef.current
+      if (!section || !cardsContainer) return
+
+      const cards = gsap.utils.toArray(cardsContainer.querySelectorAll('.experience-card'))
+      if (!cards.length) return
+
+      const numCards = cards.length
+      const scrollPerCard = window.innerHeight * 0.8
+      const totalScroll = scrollPerCard * numCards
+
+      // Set initial state - all cards start off-screen to the right
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          xPercent: 30,
+          yPercent: -50,
+          x: index === 0 ? 0 : window.innerWidth,
+          zIndex: numCards - index, // First card highest z-index initially
+          opacity: index === 0 ? 1 : 0,
+          scale: 1,
+          transformOrigin: 'center center',
+        })
+      })
+
+      // Create a timeline for the card animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: `+=${totalScroll}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.5,
+          id: 'experience-pin',
+        }
+      })
+
+      // Animate each card sliding in from right
+      cards.forEach((card, index) => {
+        if (index === 0) return // First card already visible
+
+        const cardDuration = 1 / (numCards - 1)
+        const startTime = (index - 1) * cardDuration
+
+        // Bring new card to front
+        tl.set(card, { zIndex: numCards + index }, startTime)
+
+        // Previous card moves left and fades
+        tl.to(cards[index - 1], {
+          x: -10,
+          opacity: 0.2,
+          scale: 0.85,
+          filter: 'blur(4px)',
+          duration: cardDuration,
+          ease: 'power1.inOut',
+        }, startTime)
+
+        // New card slides in from right
+        tl.fromTo(card,
+          {
+            x: window.innerWidth,
+            opacity: 0,
+            scale: 0.9,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: cardDuration,
+            ease: 'power1.inOut',
+          },
+          startTime
+        )
+      })
+
+      return () => {
+        ScrollTrigger.getAll().forEach(t => {
+          if (t.vars.id?.startsWith('experience-')) {
+            t.kill()
+          }
+        })
+      }
+    })
+
+    return () => mm.revert()
+  }, [])
+
   return (
-    <div id="experience" className='py-20 px-8'>
-      {/* Title */}
-      <div className="text-center">
-        <h1 className="text-white text-5xl font-bold mb-2" data-aos="fade-up">
+    <div id="experience" ref={sectionRef} className='min-h-screen'>
+      {/* Title - fixed at top during scroll */}
+      <div className="absolute top-20 left-0 right-0 z-10 text-center">
+        <h1 className="text-white text-4xl md:text-5xl font-bold mb-2">
           Work Experience
         </h1>
-        <div className="w-24 h-1 bg-white mx-auto mt-4" data-aos="fade-up"></div>
+        <div className="w-24 h-1 bg-white mx-auto mt-4"></div>
       </div>
 
-      {/* Mobile simplified list (single concise point per item) */}
-      <div className="md:hidden pt-12 px-6 flex flex-col gap-4">
+      {/* Mobile simplified list */}
+      <div className="md:hidden pt-24 px-6 flex flex-col gap-4">
         {experiences.map((exp, idx) => (
-          <div key={idx} data-aos="fade-up" className="p-4 bg-slate-900/90 border border-white/6 rounded-lg">
+          <div key={idx} data-aos="fade-up" className="p-4 bg-slate-900/90 border border-white/10 rounded-lg">
             <div className="flex flex-col items-start">
               <h3 className="text-lg font-semibold text-white">{exp.company}</h3>
-              <span className="text-xs text-white font-mono">{exp.period}</span>
-              <p className="text-sm text-white mt-1">{exp.title}</p>
+              <span className="text-xs text-white/70 font-mono">{exp.period}</span>
+              <p className="text-sm text-white/90 mt-1">{exp.title}</p>
             </div>
             <p className="text-slate-300 text-sm mt-3">{exp.summary}</p>
           </div>
         ))}
       </div>
 
-      {/* Desktop / Tablet experience cards (kept existing detailed layout) */}
-      <div className="hidden md:flex pt-40 px-20 md:flex-col items-center lg:items-end gap-16">
+      {/* Desktop scroll storytelling cards */}
+      <div 
+        ref={cardsContainerRef}
+        className="hidden md:block relative w-full h-screen"
+        style={{ perspective: '1000px' }}
+      >
         {experiences.map((exp, index) => (
-          <ExperienceCard experience={exp} index={index} />
+          <div 
+            key={index} 
+            className="experience-card w-full max-w-2xl"
+          >
+            <ExperienceCard experience={exp} index={index} />
+          </div>
         ))}
       </div>
-
-      <h2 className="mt-40 mb-2 text-white text-5xl font-bold text-center">Top Project</h2>
-      <div className="w-24 h-1 bg-white mx-auto mt-4" data-aos="fade-up"></div>
     </div>
   )
 }

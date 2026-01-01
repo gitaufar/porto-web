@@ -39,7 +39,7 @@ export default function ExperienceCard({ experience, index }) {
 
   return (
     <div 
-      className={`flex ${isEven ? 'lg:justify-end justify-center' : 'lg:justify-start justify-center'}`}
+      className={`flex`}
       data-aos="fade-left"
       data-experience-card
     >

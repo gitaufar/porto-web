@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef, useState, useCallback } from 'react'
 import Lenis from 'lenis'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const ScrollContext = createContext(null)
 
@@ -7,61 +11,12 @@ export const useScroll = () => useContext(ScrollContext)
 
 export const ScrollProvider = ({ children }) => {
     const lenisRef = useRef(null)
-    const rafRef = useRef(null)
     const [scrollTop, setScrollTop] = useState(0)
     const [scrollState, setScrollState] = useState({ from: 'home', to: 'about', t: 0 })
     const [activeSection, setActiveSection] = useState('home')
     const [experienceIndex, setExperienceIndex] = useState(0)
-    
-    // Experience pinning state
-    const [isExperiencePinned, setIsExperiencePinned] = useState(false)
-    const [experienceProgress, setExperienceProgress] = useState(0)
-    const experiencePinPointRef = useRef(null) // scroll position where we pinned
-    const totalCardsRef = useRef(6) // number of experience cards
 
-    // Handle wheel events when pinned
-    useEffect(() => {
-        if (!isExperiencePinned) return
-
-        const onWheel = (e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            
-            const delta = e.deltaY * 0.002 // sensitivity
-            
-            setExperienceProgress(prev => {
-                const next = prev + delta
-                
-                // If scrolling down past 1, unpin and continue scrolling
-                if (next >= 1) {
-                    setIsExperiencePinned(false)
-                    // Let Lenis continue from where we pinned
-                    if (lenisRef.current && experiencePinPointRef.current !== null) {
-                        // Scroll a bit past the experience section
-                        const experienceEl = document.getElementById('experience')
-                        if (experienceEl) {
-                            const targetScroll = experiencePinPointRef.current + experienceEl.offsetHeight
-                            lenisRef.current.scrollTo(targetScroll, { immediate: true })
-                        }
-                    }
-                    return 1
-                }
-                
-                // If scrolling up past 0, unpin and go back
-                if (next <= 0) {
-                    setIsExperiencePinned(false)
-                    return 0
-                }
-                
-                return next
-            })
-        }
-
-        window.addEventListener('wheel', onWheel, { passive: false })
-        return () => window.removeEventListener('wheel', onWheel)
-    }, [isExperiencePinned])
-
-    // initialize Lenis once
+    // initialize Lenis once and sync with GSAP
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
@@ -72,32 +27,31 @@ export const ScrollProvider = ({ children }) => {
             wheelMultiplier: 1,
             lerp: 0.1,
             syncTouch: true,
-            syncTouchLerp: 0.075
+            syncTouchLerp: 0.075,
+            autoRaf: false
         })
 
         lenis.on('scroll', ({ scroll }) => {
-            // always update scrollTop from Lenis — do NOT stop Lenis entirely
             setScrollTop(scroll)
+            ScrollTrigger.update()
         })
 
+        // Use GSAP ticker for Lenis
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000)
+        })
+        gsap.ticker.lagSmoothing(0)
 
-        const raf = (time) => {
-            lenis.raf(time)
-            rafRef.current = requestAnimationFrame(raf)
-        }
-
-        rafRef.current = requestAnimationFrame(raf)
         lenisRef.current = lenis
 
         return () => {
-            if (rafRef.current) cancelAnimationFrame(rafRef.current)
             if (lenisRef.current) lenisRef.current.destroy()
         }
     }, [])
 
-    // compute section/experience tracking centrally
+    // compute section tracking
     const computeScrollState = useCallback(() => {
-        const sections = ['home', 'about', 'experience', 'project', 'contact']
+        const sections = ['home', 'about', 'experience', 'project', 'techstack', 'contact']
         const centerY = window.innerHeight / 2
         let closest = 'home'
         let minDist = Infinity
@@ -118,29 +72,11 @@ export const ScrollProvider = ({ children }) => {
 
         setActiveSection(closest)
 
-        // Check if entering experience section and should pin
+        // Track experience card index for 3D scene
         if (closest === 'experience') {
             const experienceSection = document.getElementById('experience')
             if (experienceSection) {
-                const rect = experienceSection.getBoundingClientRect()
-                // Pin when experience section top reaches ~20% from top of viewport
-                const pinTrigger = window.innerHeight * 0.2
-                
-                if (!isExperiencePinned && rect.top <= pinTrigger && rect.bottom > window.innerHeight) {
-                    // Only pin if we haven't completed the stack yet
-                    if (experienceProgress < 1) {
-                        setIsExperiencePinned(true)
-                        experiencePinPointRef.current = scrollTop
-                        // Stop Lenis
-                        if (lenisRef.current) {
-                            lenisRef.current.stop()
-                        }
-                    }
-                }
-
-                const cards = experienceSection.querySelectorAll('[data-experience-card]')
-                totalCardsRef.current = cards.length || 6
-                
+                const cards = experienceSection.querySelectorAll('.experience-card')
                 let closestCardIndex = 0
                 let minCardDist = Infinity
 
@@ -155,13 +91,6 @@ export const ScrollProvider = ({ children }) => {
                 })
 
                 setExperienceIndex(closestCardIndex)
-            }
-        } else {
-            // Reset when leaving experience
-            if (experienceProgress >= 1) {
-                // Keep progress at 1 if completed
-            } else if (closest !== 'experience') {
-                setExperienceProgress(0)
             }
         }
 
@@ -203,29 +132,18 @@ export const ScrollProvider = ({ children }) => {
         }
 
         setScrollState({ from: closest, to: closest, t: 0 })
-    }, [isExperiencePinned, experienceProgress, scrollTop])
+    }, [scrollTop])
 
-    // compute scroll state whenever Lenis updates `scrollTop`.
     useEffect(() => {
         computeScrollState()
     }, [scrollTop, computeScrollState])
-
-    // Restart Lenis when unpinned
-    useEffect(() => {
-        if (!isExperiencePinned && lenisRef.current) {
-            lenisRef.current.start()
-        }
-    }, [isExperiencePinned])
 
     const value = {
         lenis: lenisRef,
         scrollTop,
         scrollState,
         activeSection,
-        experienceIndex,
-        experienceProgress,
-        isExperiencePinned,
-        totalCards: totalCardsRef.current
+        experienceIndex
     }
 
     return (

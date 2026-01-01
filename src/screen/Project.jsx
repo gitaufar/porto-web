@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {ProjectCard} from "../component/Card/ProjectCard";
+import { ProjectCard } from "../component/Card/ProjectCard";
 
 export default function Project() {
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Project() {
             description:
                 "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
             githubLink: "https://magnapartners.org/",
-            image:"/project/magnav2.png",
+            image: "/project/magnav2.png",
             techStack: [
                 {
                     name: "Next.js",
@@ -30,7 +30,7 @@ export default function Project() {
                 {
                     name: "Supabase",
                     logo: "/techstack/supabase_logo.png",
-                }, 
+                },
                 {
                     name: "TypeScript",
                     logo: "/techstack/typescript_logo.png",
@@ -46,7 +46,7 @@ export default function Project() {
             title: "Portfolio Website",
             description: "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
             githubLink: "https://aufarzhfr.vercel.app/",
-            image:"/project/portofolio.png",
+            image: "/project/portofolio.png",
             techStack: [
                 {
                     name: "React.js",
@@ -72,7 +72,7 @@ export default function Project() {
             description:
                 "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
             githubLink: "https://raion.ub.ac.id",
-            image:"/project/raion.png",
+            image: "/project/raion.png",
             techStack: [
                 {
                     name: "Next.js",
@@ -94,7 +94,7 @@ export default function Project() {
             description:
                 "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
             githubLink: "https://www.pemdeswringinanom.web.id/",
-            image:"/project/wringinanom.png",
+            image: "/project/wringinanom.png",
             techStack: [
                 {
                     name: "Next.js",
@@ -107,7 +107,7 @@ export default function Project() {
                 {
                     name: "Supabase",
                     logo: "/techstack/supabase_logo.png",
-                }, 
+                },
                 {
                     name: "TypeScript",
                     logo: "/techstack/typescript_logo.png",
@@ -120,7 +120,7 @@ export default function Project() {
             description:
                 "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
             githubLink: "https://technoday.vercel.app/",
-            image:"/project/optimind.png",
+            image: "/project/optimind.png",
             techStack: [
                 {
                     name: "Next.js",
@@ -133,7 +133,7 @@ export default function Project() {
                 {
                     name: "Supabase",
                     logo: "/techstack/supabase_logo.png",
-                }, 
+                },
                 {
                     name: "TypeScript",
                     logo: "/techstack/typescript_logo.png",
@@ -151,16 +151,24 @@ export default function Project() {
         },
     ];
     return (
-        <div className="min-h-screen min-w-screen grid grid-cols-1 lg:grid-cols-2 items-start" id="project">
-            <ul className="w-full">
-                <div className="pt-24 px-6 md:px-20 flex flex-col items-start gap-12 md:gap-16">
-                    {projects.map((project, index) => (
-                        <li key={index} data-aos="fade-right">
-                            <ProjectCard project={project} />
-                        </li>
-                    ))}
-                </div>
-            </ul>
+        <div className="min-h-screen" id="project">
+            <div className="absolute top-20 left-0 right-0 z-10 text-center">
+                <h1 className="text-white text-4xl md:text-5xl font-bold mb-2">
+                    Top Project
+                </h1>
+                <div className="w-24 h-1 bg-white mx-auto mt-4"></div>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-start">
+                <ul className="w-full">
+                    <div className="pt-24 px-6 md:px-20 flex flex-col items-start gap-12 md:gap-16">
+                        {projects.map((project, index) => (
+                            <li key={index} data-aos="fade-right">
+                                <ProjectCard project={project} />
+                            </li>
+                        ))}
+                    </div>
+                </ul>
+            </div>
         </div>
     )
 }
