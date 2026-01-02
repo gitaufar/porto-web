@@ -42,7 +42,7 @@ export default function Project() {
         },
         {
             title: "Portfolio Website",
-            description: "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+            description: "Personal portfolio website showcasing projects, skills, and experience, built with React.js and Tailwind CSS.",
             githubLink: "https://aufarzhfr.vercel.app/",
             image: "/project/portofolio.png",
             techStack: [
@@ -68,7 +68,7 @@ export default function Project() {
         {
             title: "Raion Community Website",
             description:
-                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+                "Company profile website for Raion Community, an organization focusing on technology and programming education.",
             githubLink: "https://raion.ub.ac.id",
             image: "/project/raion.png",
             techStack: [
@@ -90,7 +90,7 @@ export default function Project() {
         {
             title: "Pemdesa Wringinanom Website",
             description:
-                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+                "Website for the Wringinanom Village Government to digitalize public services specially application letters, deployed and used by the village government.",
             githubLink: "https://www.pemdeswringinanom.web.id/",
             image: "/project/wringinanom.png",
             techStack: [
@@ -116,7 +116,7 @@ export default function Project() {
         {
             title: "Optimind",
             description:
-                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
+                "SaaS that helps company to manage their contract (risk management, contract lifecycle, etc) use ai, deployed and used for the hackathon project.",
             githubLink: "https://technoday.vercel.app/",
             image: "/project/optimind.png",
             techStack: [
