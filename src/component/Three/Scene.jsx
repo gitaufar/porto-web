@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber"
-import { Environment } from "@react-three/drei"
+import { Suspense } from "react"
 import StarBackground from "./StarBackground"
 import Astronaut from "./Astronaut"
 import CameraSetup from "./CameraSetup"
@@ -10,11 +10,14 @@ export default function Scene({ showShootingStar, onStarFinished, activeSection,
     return (
         <Canvas
             camera={{ fov: 50 }}
+            dpr={[1, 1.5]}
             gl={{
+                antialias: false,
                 outputColorSpace: THREE.SRGBColorSpace,
                 toneMapping: THREE.ACESFilmicToneMapping,
                 toneMappingExposure: 1,
             }}
+            shadows={false}
             style={{
                 position: "fixed",
                 inset: 0,
@@ -28,12 +31,13 @@ export default function Scene({ showShootingStar, onStarFinished, activeSection,
             <ambientLight intensity={0.4} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <directionalLight position={[-5, -5, 5]} intensity={0.5} />
-            <Environment preset="city" />
 
-            {/* OBJECT */}
-            <StarBackground />
-            <Astronaut activeSection={activeSection} scrollState={scrollState} />
-            <ShootingStar showShootingStar={showShootingStar} onStarFinished={onStarFinished} />
+            {/* OBJECT: lazy / suspense to avoid blocking render */}
+            <Suspense fallback={null}>
+                <StarBackground />
+                <Astronaut activeSection={activeSection} scrollState={scrollState} />
+                <ShootingStar showShootingStar={showShootingStar} onStarFinished={onStarFinished} />
+            </Suspense>
         </Canvas>
     )
 }

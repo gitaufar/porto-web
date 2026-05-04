@@ -10,6 +10,15 @@ export default function Astronaut({ activeSection, scrollState }) {
   const spinning = useRef(false)
   const spinDir = useRef(1)
 
+  // preload to allow non-blocking fetch when possible
+  useEffect(() => {
+    try {
+      useGLTF.preload("/models/astronaut.glb")
+    } catch (e) {
+      // ignore if preload isn't available in this drei version
+    }
+  }, [])
+
   const { scene, animations } = useGLTF("/models/astronaut.glb")
   const { actions } = useAnimations(animations, ref)
 
@@ -84,10 +93,22 @@ export default function Astronaut({ activeSection, scrollState }) {
   useEffect(() => {
     scene.traverse((obj) => {
       if (!obj.isMesh) return
-      obj.material.needsUpdate = true
-      obj.material.envMapIntensity = 1
-      obj.material.roughness = Math.min(obj.material.roughness ?? 0.8, 0.8)
-      obj.material.metalness = Math.min(obj.material.metalness ?? 0.5, 0.5)
+      // Disable shadows and ensure frustum culling to reduce GPU cost
+      obj.castShadow = false
+      obj.receiveShadow = false
+      obj.frustumCulled = true
+
+      // Tweak material to avoid expensive settings if present
+      if (obj.material) {
+        obj.material.needsUpdate = true
+        obj.material.envMapIntensity = 1
+        obj.material.roughness = Math.min(obj.material.roughness ?? 0.8, 0.8)
+        obj.material.metalness = Math.min(obj.material.metalness ?? 0.5, 0.5)
+        // prefer single-sided materials when possible
+        try {
+          obj.material.side = THREE.FrontSide
+        } catch (e) {}
+      }
     })
   }, [scene])
 
