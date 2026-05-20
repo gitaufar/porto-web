@@ -82,27 +82,85 @@
 
 @media (min-width: 1024px) and (max-height: 900px) {
   .laptop-compact-experience-card {
-    padding: 1.25rem !important;
+    padding: 1.1rem !important;
     max-height: 68vh;
     overflow: hidden;
   }
 
+  .laptop-compact-experience-header {
+    gap: 0.75rem;
+    margin-bottom: 0.55rem !important;
+  }
+
   .laptop-compact-experience-title {
-    font-size: 1.35rem !important;
-    line-height: 1.2;
+    font-size: 1.2rem !important;
+    line-height: 1.18;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .laptop-compact-experience-company,
+  .laptop-compact-experience-location {
+    font-size: 0.78rem !important;
+    line-height: 1.25;
+  }
+
+  .laptop-compact-experience-period {
+    flex-shrink: 0;
+    font-size: 0.65rem !important;
+    line-height: 1;
+    padding: 0.28rem 0.55rem !important;
+  }
+
+  .laptop-compact-experience-location {
+    gap: 0.4rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  .laptop-compact-experience-location-icon {
+    width: 0.85rem !important;
+    height: 0.85rem !important;
+  }
+
+  .laptop-compact-experience-list {
+    gap: 0.35rem !important;
   }
 
   .laptop-compact-experience-item {
-    font-size: 0.9rem !important;
-    line-height: 1.45;
+    gap: 0.55rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1.38;
+  }
+
+  .laptop-compact-experience-bullet {
+    font-size: 0.65rem !important;
+    margin-top: 0.28rem !important;
   }
 
   .laptop-compact-experience-item:nth-child(n + 4) {
     display: none !important;
   }
 
+  .laptop-compact-project-shell {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
   .laptop-compact-project-card {
-    padding: 1.1rem !important;
+    padding: 0.9rem !important;
+  }
+
+  .laptop-compact-project-image {
+    height: 12rem !important;
+    border-radius: 0.55rem !important;
+  }
+
+  .laptop-compact-project-title-row {
+    margin-top: 1rem !important;
+  }
+
+  .laptop-compact-project-title {
+    font-size: 1.15rem !important;
+    line-height: 1.2;
   }
 
   .laptop-hidden-project-description {
@@ -110,7 +168,34 @@
   }
 
   .laptop-compact-project-footer {
-    margin-top: 1.25rem !important;
+    margin-top: 1rem !important;
+    gap: 1rem;
+  }
+
+  .laptop-compact-project-tech-list {
+    gap: 0.35rem !important;
+  }
+
+  .laptop-compact-project-tech-item {
+    margin-right: -0.7rem !important;
+  }
+
+  .laptop-compact-project-tech-icon {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .laptop-compact-project-button {
+    font-size: 0.68rem !important;
+    line-height: 1;
+    padding: 0.32rem 0.45rem 0.32rem 0.7rem !important;
+    white-space: nowrap;
+  }
+
+  .laptop-compact-project-button-icon {
+    width: 0.95rem !important;
+    height: 0.95rem !important;
+    margin-left: 0.25rem !important;
   }
 }
 

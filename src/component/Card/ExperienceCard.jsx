@@ -60,23 +60,23 @@ export default function ExperienceCard({ experience, index }) {
           {/* Content */}
           <div className="relative z-10">
             {/* Header */}
-            <div className="flex justify-between items-start mb-3">
+            <div className="flex justify-between items-start mb-3 laptop-compact-experience-header">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-1 laptop-compact-experience-title">
                   {experience.title}
                 </h3>
-                <p className="text-white font-semibold text-sm">
+                <p className="text-white font-semibold text-sm laptop-compact-experience-company">
                   {experience.company}
                 </p>
               </div>
-              <span className="text-blue-200 text-xs font-mono px-3 py-1 bg-blue-900/20 rounded-full border border-blue-800/40">
+              <span className="text-blue-200 text-xs font-mono px-3 py-1 bg-blue-900/20 rounded-full border border-blue-800/40 laptop-compact-experience-period">
                 {experience.period}
               </span>
             </div>
 
             {/* Location */}
-            <p className="text-slate-300 text-sm mb-4 flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <p className="text-slate-300 text-sm mb-4 flex items-center gap-2 laptop-compact-experience-location">
+              <svg className="w-4 h-4 laptop-compact-experience-location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -84,10 +84,10 @@ export default function ExperienceCard({ experience, index }) {
             </p>
 
             {/* Description */}
-            <ul className="space-y-2">
+            <ul className="space-y-2 laptop-compact-experience-list">
               {experience.description.map((desc, idx) => (
                 <li key={idx} className="text-slate-300 text-base flex items-start gap-3 laptop-compact-experience-item">
-                  <span className="text-blue-400 mt-1.5 text-sm">◆</span>
+                  <span className="text-blue-400 mt-1.5 text-sm laptop-compact-experience-bullet">◆</span>
                   <span className="flex-1">{desc}</span>
                 </li>
               ))}
