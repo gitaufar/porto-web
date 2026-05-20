@@ -41,7 +41,7 @@ export const ProjectCard = ({ project }) => {
             transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`
           }}
         >
-          <div className="transform-3d *:transform-3d relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:border-white/20 border-black/20 shadow-lg w-full flex flex-col justify-between rounded-xl p-5 border bg-slate-900/80 backdrop-blur-sm">
+          <div className="transform-3d *:transform-3d relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:border-white/20 border-black/20 shadow-lg w-full flex flex-col justify-between rounded-xl p-5 border bg-slate-900/80 backdrop-blur-sm laptop-compact-project-card">
             
             {/* Image Section */}
             <div
@@ -81,7 +81,7 @@ export const ProjectCard = ({ project }) => {
 
             {/* Description */}
             <p
-              className="w-fit transition duration-200 ease-linear text-neutral-400 text-sm md:text-base max-w-full pr-2 text-justify mt-2 dark:text-neutral-300 line-clamp-4"
+              className="w-fit transition duration-200 ease-linear text-neutral-400 text-sm md:text-base max-w-full pr-2 text-justify mt-2 dark:text-neutral-300 line-clamp-4 laptop-hidden-project-description"
               style={{
                 transform: `translateZ(25px)`,
                 transformStyle: 'preserve-3d'
@@ -91,7 +91,7 @@ export const ProjectCard = ({ project }) => {
             </p>
 
             {/* Tech Stack and GitHub Button */}
-            <div className="flex justify-between items-center mt-8">
+            <div className="flex justify-between items-center mt-8 laptop-compact-project-footer">
               {/* Tech Stack Icons */}
               <div
                 className="w-fit transition duration-200 ease-linear"

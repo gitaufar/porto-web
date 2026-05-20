@@ -80,3 +80,37 @@
   animation: marquee-right 40s linear infinite;
 }
 
+@media (min-width: 1024px) and (max-height: 900px) {
+  .laptop-compact-experience-card {
+    padding: 1.25rem !important;
+    max-height: 68vh;
+    overflow: hidden;
+  }
+
+  .laptop-compact-experience-title {
+    font-size: 1.35rem !important;
+    line-height: 1.2;
+  }
+
+  .laptop-compact-experience-item {
+    font-size: 0.9rem !important;
+    line-height: 1.45;
+  }
+
+  .laptop-compact-experience-item:nth-child(n + 4) {
+    display: none !important;
+  }
+
+  .laptop-compact-project-card {
+    padding: 1.1rem !important;
+  }
+
+  .laptop-hidden-project-description {
+    display: none !important;
+  }
+
+  .laptop-compact-project-footer {
+    margin-top: 1.25rem !important;
+  }
+}
+

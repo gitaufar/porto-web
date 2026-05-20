@@ -172,13 +172,15 @@ const Experience = () => {
       const scrollPerCard = window.innerHeight * 0.8
       const totalScroll = scrollPerCard * numCards
 
+      const isLaptopHeight = window.innerHeight <= 900
+
       // Small desktop: cards positioned slightly to the right
       cards.forEach((card, index) => {
         gsap.set(card, {
           position: 'absolute',
           top: '50%',
-          left: '65%',
-          xPercent: -30,
+          left: isLaptopHeight ? '60%' : '65%',
+          xPercent: isLaptopHeight ? -35 : -30,
           yPercent: -50,
           x: index === 0 ? 0 : window.innerWidth,
           zIndex: numCards - index,
@@ -241,13 +243,15 @@ const Experience = () => {
       const scrollPerCard = window.innerHeight * 0.8
       const totalScroll = scrollPerCard * numCards
 
+      const isLaptopHeight = window.innerHeight <= 900
+
       // Large desktop: cards positioned to the right
       cards.forEach((card, index) => {
         gsap.set(card, {
           position: 'absolute',
           top: '50%',
           left: '50%',
-          xPercent: 30,
+          xPercent: isLaptopHeight ? 5 : 30,
           yPercent: -50,
           x: index === 0 ? 0 : window.innerWidth,
           zIndex: numCards - index,

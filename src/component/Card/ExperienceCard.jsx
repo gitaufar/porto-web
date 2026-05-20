@@ -53,7 +53,7 @@ export default function ExperienceCard({ experience, index }) {
             transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) ${isHovered ? 'scale(1.02)' : 'scale(1)'}`,
             transition: isHovered ? 'transform 0.12s ease-out' : 'transform 0.5s ease-out',
           }}
-          className="relative p-8 rounded-lg border border-white/10 bg-slate-900/90 backdrop-blur-md shadow-lg transition-colors duration-200"
+          className="relative p-8 rounded-lg border border-white/10 bg-slate-900/90 backdrop-blur-md shadow-lg transition-colors duration-200 laptop-compact-experience-card"
         >
           {/* simple dark background + stronger backdrop blur for readability */}          
           
@@ -62,7 +62,7 @@ export default function ExperienceCard({ experience, index }) {
             {/* Header */}
             <div className="flex justify-between items-start mb-3">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-1">
+                <h3 className="text-2xl font-bold text-white mb-1 laptop-compact-experience-title">
                   {experience.title}
                 </h3>
                 <p className="text-white font-semibold text-sm">
@@ -86,7 +86,7 @@ export default function ExperienceCard({ experience, index }) {
             {/* Description */}
             <ul className="space-y-2">
               {experience.description.map((desc, idx) => (
-                <li key={idx} className="text-slate-300 text-base flex items-start gap-3">
+                <li key={idx} className="text-slate-300 text-base flex items-start gap-3 laptop-compact-experience-item">
                   <span className="text-blue-400 mt-1.5 text-sm">◆</span>
                   <span className="flex-1">{desc}</span>
                 </li>

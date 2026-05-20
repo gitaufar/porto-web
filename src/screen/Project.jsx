@@ -235,13 +235,15 @@ export default function Project() {
             const scrollPerCard = window.innerHeight * 0.8
             const totalScroll = scrollPerCard * numCards
 
+            const isLaptopHeight = window.innerHeight <= 900
+
             // Small desktop: cards positioned slightly to the left
             cards.forEach((card, index) => {
                 gsap.set(card, {
                     position: 'absolute',
                     top: '50%',
-                    left: '40%',
-                    xPercent: -70,
+                    left: isLaptopHeight ? '43%' : '40%',
+                    xPercent: isLaptopHeight ? -58 : -70,
                     yPercent: -50,
                     x: index === 0 ? 0 : -window.innerWidth,
                     zIndex: numCards - index,
@@ -304,13 +306,15 @@ export default function Project() {
             const scrollPerCard = window.innerHeight * 0.8
             const totalScroll = scrollPerCard * numCards
 
+            const isLaptopHeight = window.innerHeight <= 900
+
             // Large desktop: cards positioned to the left
             cards.forEach((card, index) => {
                 gsap.set(card, {
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    xPercent: -120,
+                    xPercent: isLaptopHeight ? -90 : -120,
                     yPercent: -50,
                     x: index === 0 ? 0 : -window.innerWidth,
                     zIndex: numCards - index,
