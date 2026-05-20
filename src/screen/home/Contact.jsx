@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TextType from '../component/Text/TextType.jsx'
+import TextType from '../../component/Text/TextType.jsx'
 const Contact = () => {
 
   const logo = [

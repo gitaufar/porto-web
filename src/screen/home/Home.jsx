@@ -1,7 +1,7 @@
-import Scene from "../component/Three/Scene"
+import Scene from "../../component/Three/Scene.jsx"
 import { useState, useEffect } from "react"
-import TextType from "../component/Text/TextType"
-import { useScroll } from '../utils/ScrollProvider.jsx'
+import TextType from "../../component/Text/TextType.jsx"
+import { useScroll } from '../../utils/ScrollProvider.jsx'
 
 export default function Home() {
   const [showShootingStar, setShowShootingStar] = useState(false)

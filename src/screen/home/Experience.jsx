@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import ExperienceCard from '../component/Card/ExperienceCard'
+import ExperienceCard from '../../component/Card/ExperienceCard'
 
 gsap.registerPlugin(ScrollTrigger)
 

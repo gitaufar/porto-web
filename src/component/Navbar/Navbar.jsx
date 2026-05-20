@@ -66,21 +66,21 @@ export default function Navbar() {
 
             {/* Desktop pill */}
             <div className="hidden md:flex text-xl px-8 gap-6 py-4 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="#home">Home</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="#about">About</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="#experience">Experience</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="#project">Projects</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="#contact">Contact</a>
+                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#home">Home</a>
+                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#about">About</a>
+                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#experience">Experience</a>
+                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#project">Projects</a>
+                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#contact">Contact</a>
             </div>
 
             {/* Mobile sliding menu */}
             <div ref={navbarRef} className="fixed top-16 -right-full md:hidden transition-all duration-300 w-64 max-w-[80%] h-auto bg-white/5 backdrop-blur-md p-4 rounded-l-lg border border-white/10 z-50">
                 <nav className="flex flex-col gap-3">
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="#home">Home</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="#about">About</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="#experience">Experience</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="#project">Projects</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="#contact">Contact</a>
+                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#home">Home</a>
+                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#about">About</a>
+                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#experience">Experience</a>
+                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#project">Projects</a>
+                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#contact">Contact</a>
                 </nav>
             </div>
         </nav>

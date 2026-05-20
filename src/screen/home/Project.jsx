@@ -1,154 +1,15 @@
 import { useRef, useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ProjectCard } from "../component/Card/ProjectCard";
+import { ProjectCard } from "../../component/Card/ProjectCard";
+import { projects } from "../../core/projects";
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Project() {
     const sectionRef = useRef(null)
     const cardsContainerRef = useRef(null)
-
-    const projects = [
-        {
-            title: "Magna Partners V2",
-            description:
-                "Full-stack web system with dashboards, authentication, and modular backend — deployed for real organizational use.",
-            githubLink: "https://magnapartners.org/",
-            image: "/project/magnav2.png",
-            techStack: [
-                {
-                    name: "Next.js",
-                    logo: "/techstack/nextjs.png",
-                },
-                {
-                    name: "Tailwind CSS",
-                    logo: "/techstack/tailwind_logo.png",
-                },
-                {
-                    name: "Supabase",
-                    logo: "/techstack/supabase_logo.png",
-                },
-                {
-                    name: "TypeScript",
-                    logo: "/techstack/typescript_logo.png",
-                },
-                {
-                    name: "Bruno",
-                    logo: "/techstack/bruno_logo.png",
-                }
-            ],
-            type: "website"
-        },
-        {
-            title: "Portfolio Website",
-            description: "Personal portfolio website showcasing projects, skills, and experience, built with React.js and Tailwind CSS.",
-            githubLink: "https://aufarzhfr.vercel.app/",
-            image: "/project/portofolio.png",
-            techStack: [
-                {
-                    name: "React.js",
-                    logo: "/techstack/react_logo.png",
-                },
-                {
-                    name: "Tailwind CSS",
-                    logo: "/techstack/tailwind_logo.png",
-                },
-                {
-                    name: "TypeScript",
-                    logo: "/techstack/typescript_logo.png",
-                },
-                {
-                    name: "Three Js",
-                    logo: "/techstack/threejs_logo.png",
-                }
-            ],
-            type: "website"
-        },
-        {
-            title: "Raion Community Website",
-            description:
-                "Company profile website for Raion Community, an organization focusing on technology and programming education.",
-            githubLink: "https://raion.ub.ac.id",
-            image: "/project/raion.png",
-            techStack: [
-                {
-                    name: "Next.js",
-                    logo: "/techstack/nextjs.png",
-                },
-                {
-                    name: "Tailwind CSS",
-                    logo: "/techstack/tailwind_logo.png",
-                },
-                {
-                    name: "TypeScript",
-                    logo: "/techstack/typescript_logo.png",
-                }
-            ],
-            type: "website"
-        },
-        {
-            title: "Pemdesa Wringinanom Website",
-            description:
-                "Website for the Wringinanom Village Government to digitalize public services specially application letters, deployed and used by the village government.",
-            githubLink: "https://www.pemdeswringinanom.web.id/",
-            image: "/project/wringinanom.png",
-            techStack: [
-                {
-                    name: "Next.js",
-                    logo: "/techstack/nextjs.png",
-                },
-                {
-                    name: "Tailwind CSS",
-                    logo: "/techstack/tailwind_logo.png",
-                },
-                {
-                    name: "Supabase",
-                    logo: "/techstack/supabase_logo.png",
-                },
-                {
-                    name: "TypeScript",
-                    logo: "/techstack/typescript_logo.png",
-                },
-            ],
-            type: "website"
-        },
-        {
-            title: "Optimind",
-            description:
-                "SaaS that helps company to manage their contract (risk management, contract lifecycle, etc) use ai, deployed and used for the hackathon project.",
-            githubLink: "https://technoday.vercel.app/",
-            image: "/project/optimind.png",
-            techStack: [
-                {
-                    name: "Next.js",
-                    logo: "/techstack/nextjs.png",
-                },
-                {
-                    name: "Tailwind CSS",
-                    logo: "/techstack/tailwind_logo.png",
-                },
-                {
-                    name: "Supabase",
-                    logo: "/techstack/supabase_logo.png",
-                },
-                {
-                    name: "TypeScript",
-                    logo: "/techstack/typescript_logo.png",
-                },
-                {
-                    name: "Fast API",
-                    logo: "/techstack/fastapi_logo.png",
-                },
-                {
-                    name: "Hugging Face",
-                    logo: "/techstack/huggingface_logo.png",
-                }
-            ],
-            type: "website"
-        },
-    ];
-
     // Scroll storytelling animation
     useLayoutEffect(() => {
         const mm = gsap.matchMedia()
@@ -394,6 +255,13 @@ export default function Project() {
                     Top Project
                 </h1>
                 <div className="w-24 h-1 bg-white mx-auto lg:ml-auto lg:mr-0 2xl:mx-auto mt-4"></div>
+                <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 mt-5 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20 laptop-project-view-all-cta"
+                >
+                    View All
+                    <span aria-hidden="true">→</span>
+                </Link>
             </div>
 
             {/* Mobile simplified list */}
@@ -423,3 +291,4 @@ export default function Project() {
         </div>
     )
 }
+

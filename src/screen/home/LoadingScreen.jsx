@@ -1,24 +1,32 @@
 import { useEffect, useState } from 'react'
 
+let hasShownInitialLoading = false
+
 export default function LoadingScreen() {
   const name = 'aufarzhfr'
   const [visibleCount, setVisibleCount] = useState(0)
-  const [hidden, setHidden] = useState(false)
+  const [hidden, setHidden] = useState(hasShownInitialLoading)
   const [fading, setFading] = useState(false)
 
   useEffect(() => {
+    if (hasShownInitialLoading) return
+
+    const timeouts = []
     const interval = setInterval(() => {
       setVisibleCount((prev) => {
         if (prev >= name.length) {
           clearInterval(interval)
 
           // ⏸️ pause 300ms after last letter
-          setTimeout(() => {
+          timeouts.push(setTimeout(() => {
             setFading(true)
 
             // remove after fade (0.6s + buffer)
-            setTimeout(() => setHidden(true), 700)
-          }, 1000)
+            timeouts.push(setTimeout(() => {
+              hasShownInitialLoading = true
+              setHidden(true)
+            }, 700))
+          }, 1000))
 
           return prev
         }
@@ -26,7 +34,10 @@ export default function LoadingScreen() {
       })
     }, 180)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      timeouts.forEach(clearTimeout)
+    }
   }, [])
 
   if (hidden) return null

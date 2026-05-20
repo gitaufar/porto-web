@@ -145,6 +145,16 @@
     padding-bottom: 0.6rem !important;
   }
 
+  .laptop-project-view-all-cta {
+    position: absolute;
+    top: 3rem;
+    left: 11vw;
+    margin-top: 0 !important;
+    padding: 0.42rem 1rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1;
+  }
+
   .laptop-compact-project-card {
     padding: 0.9rem !important;
   }
@@ -195,7 +205,5 @@
   .laptop-compact-project-button-icon {
     width: 0.95rem !important;
     height: 0.95rem !important;
-    margin-left: 0.25rem !important;
   }
 }
-
