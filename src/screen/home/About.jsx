@@ -72,7 +72,7 @@ export default function About() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-w-screen min-h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-2 max-w-460 mx-auto min-h-screen">
       <div className="flex flex-col px-6 md:pl-24 justify-center" id="about">
         <div className="max-w-xl">
           <h1 className="text-white text-3xl md:text-4xl font-bold" data-aos="fade-up">
