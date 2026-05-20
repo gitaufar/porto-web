@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 
-let hasShownInitialLoading = false
-
 export default function LoadingScreen() {
   const name = 'aufarzhfr'
   const [visibleCount, setVisibleCount] = useState(0)
-  const [hidden, setHidden] = useState(hasShownInitialLoading)
+  const [hidden, setHidden] = useState(false)
   const [fading, setFading] = useState(false)
 
   useEffect(() => {
-    if (hasShownInitialLoading) return
-
     const timeouts = []
     const interval = setInterval(() => {
       setVisibleCount((prev) => {
@@ -23,7 +19,6 @@ export default function LoadingScreen() {
 
             // remove after fade (0.6s + buffer)
             timeouts.push(setTimeout(() => {
-              hasShownInitialLoading = true
               setHidden(true)
             }, 700))
           }, 1000))

@@ -1,11 +1,34 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Scene from '../../component/Three/Scene'
 import { projects } from '../../core/projects'
 
 const AllProjects = () => {
+  const [showShootingStar, setShowShootingStar] = useState(false)
+
+  useEffect(() => {
+    let timeoutId
+
+    const spawnStar = () => {
+      setShowShootingStar(true)
+      timeoutId = setTimeout(spawnStar, Math.random() * 4000 + 1000)
+    }
+
+    spawnStar()
+
+    return () => clearTimeout(timeoutId)
+  }, [])
+
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black px-6 pb-16 pt-32 text-white md:px-10 lg:px-16">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_24%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-45 bg-[radial-gradient(circle,rgba(255,255,255,0.55)_1px,transparent_1px)] bg-size-[44px_44px]" />
+    <main className="relative min-h-screen overflow-hidden bg-transparent px-6 pb-16 pt-32 text-white md:px-10 lg:px-16">
+      <Scene
+        showShootingStar={showShootingStar}
+        onStarFinished={() => setShowShootingStar(false)}
+        activeSection="project"
+        scrollState={{ from: 'project', to: 'project', t: 0 }}
+      />
+      <div className="pointer-events-none fixed inset-0 z-1 bg-linear-to-b from-black/70 via-black/20 to-black/90" />
+      <div className="pointer-events-none absolute inset-0 z-1 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_24%)]" />
 
       <section className="relative z-10 mx-auto max-w-6xl">
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">

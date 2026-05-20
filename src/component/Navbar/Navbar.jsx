@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const navbarRef = useRef(null);
@@ -66,21 +67,21 @@ export default function Navbar() {
 
             {/* Desktop pill */}
             <div className="hidden md:flex text-xl px-8 gap-6 py-4 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#home">Home</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#about">About</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#experience">Experience</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#project">Projects</a>
-                <a className="text-base text-white cursor-pointer hover:text-gray-300" href="/#contact">Contact</a>
+                <Link className="text-base text-white cursor-pointer hover:text-gray-300" to="/#home">Home</Link>
+                <Link className="text-base text-white cursor-pointer hover:text-gray-300" to="/#about">About</Link>
+                <Link className="text-base text-white cursor-pointer hover:text-gray-300" to="/#experience">Experience</Link>
+                <Link className="text-base text-white cursor-pointer hover:text-gray-300" to="/#project">Projects</Link>
+                <Link className="text-base text-white cursor-pointer hover:text-gray-300" to="/#contact">Contact</Link>
             </div>
 
             {/* Mobile sliding menu */}
             <div ref={navbarRef} className="fixed top-16 -right-full md:hidden transition-all duration-300 w-64 max-w-[80%] h-auto bg-white/5 backdrop-blur-md p-4 rounded-l-lg border border-white/10 z-50">
                 <nav className="flex flex-col gap-3">
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#home">Home</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#about">About</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#experience">Experience</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#project">Projects</a>
-                    <a onClick={closeMobileMenu} className="text-white text-lg font-medium" href="/#contact">Contact</a>
+                    <Link onClick={closeMobileMenu} className="text-white text-lg font-medium" to="/#home">Home</Link>
+                    <Link onClick={closeMobileMenu} className="text-white text-lg font-medium" to="/#about">About</Link>
+                    <Link onClick={closeMobileMenu} className="text-white text-lg font-medium" to="/#experience">Experience</Link>
+                    <Link onClick={closeMobileMenu} className="text-white text-lg font-medium" to="/#project">Projects</Link>
+                    <Link onClick={closeMobileMenu} className="text-white text-lg font-medium" to="/#contact">Contact</Link>
                 </nav>
             </div>
         </nav>
